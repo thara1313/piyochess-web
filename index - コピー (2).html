@@ -1,0 +1,513 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PiyoChess – Cute Mini Chess Game</title>
+  <meta name="description" content="PiyoChess is a cute, fast-paced mini chess game with a heart system, simple battles, and relaxing BGM." />
+  <style>
+    :root {
+      --bg: #f7f4ec;
+      --accent: #f5b041;
+      --accent-dark: #e5982c;
+      --text: #2c3e50;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    header h1 span.logo {
+      font-size: 1.4rem;
+    }
+
+    header nav a {
+      margin-left: 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-text h2 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-text p.lead {
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.98rem;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .hero-art {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-art img {
+      width: 100%;
+      border-radius: 18px;
+      display: block;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    h3.section-title {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 12px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .feature-item {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-emoji {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .screenshots-grid img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .char-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .char-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .char-name {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .howto-steps {
+      list-style: decimal;
+      padding-left: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 12px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      background: #e1dccf;
+      padding: 20px 24px;
+      font-size: 0.85rem;
+    }
+
+    footer .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <h1>
+      <span class="logo">🐥</span>
+      <span>PiyoChess</span>
+    </h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#characters">Characters</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Relaxing mini chess with cute chicks.</h2>
+      <p class="lead">
+        PiyoChess is a compact 5×7 chess battle game.  
+        Play short matches, manage your hearts, and enjoy calm background music.
+      </p>
+      <p>
+        Designed for players who want quick brain training with a gentle, cozy atmosphere.
+      </p>
+
+      <div class="hero-buttons">
+        <!-- ★ App Store のURLをリリース後にここへ -->
+        <a class="btn-primary" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">
+          Start the game on App Store
+        </a>
+
+        <!-- ★ Google Play を出すならURLをここへ -->
+        <a class="btn-secondary" href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+          Also coming to Google Play
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <!-- ★ ここを実際のゲームのスクリーンショットに差し替え -->
+      <img src="assets/hero-screenshot.png" alt="PiyoChess gameplay screenshot" />
+    </div>
+  </section>
+
+  <main>
+    <!-- ===== About ===== -->
+    <section id="about">
+      <h3 class="section-title">About PiyoChess</h3>
+      <div class="card">
+        <p>
+          PiyoChess is a simple mini chess game played on a 5×7 board.
+          It focuses on short, readable positions instead of full 8×8 chess.
+          Players use hearts to start battles, and hearts slowly recover over time.
+        </p>
+        <p>
+          You can play against an AI opponent, clear courses, and unlock character
+          stories as you progress. The game is built for mobile and designed to be
+          easy to pick up and put down.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section id="features">
+      <h3 class="section-title">Key Features</h3>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-emoji">🎯</div>
+          <h4>Compact 5×7 Board</h4>
+          <p>
+            Short, readable battles that finish quickly. Perfect for a few minutes
+            of brain training.
+          </p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-emoji">💛</div>
+          <h4>Heart System</h4>
+          <p>
+            Use hearts to start a battle. Hearts recover over time or by watching
+            optional reward ads.
+          </p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-emoji">🧠</div>
+          <h4>AI Opponent</h4>
+          <p>
+            Play against an AI that prioritizes king safety. Great for practicing
+            basic tactical and positional ideas.
+          </p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-emoji">📖</div>
+          <h4>Characters & Stories</h4>
+          <p>
+            Meet unique characters and unlock small episodes as you clear courses.
+          </p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-emoji">🎵</div>
+          <h4>Relaxing BGM</h4>
+          <p>
+            Calming background music and sound effects create a gentle atmosphere
+            while you play.
+          </p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-emoji">📱</div>
+          <h4>Made for Mobile</h4>
+          <p>
+            Simple controls, short sessions, and offline-friendly design
+            (except for ads).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Screenshots ===== -->
+    <section id="screenshots">
+      <h3 class="section-title">Screenshots</h3>
+      <p>You can replace these placeholder images with real in-game screenshots.</p>
+      <div class="screenshots-grid">
+        <!-- ★ 実際の画像に入れ替えてOK -->
+        <img src="assets/screen1.png" alt="PiyoChess screenshot 1" />
+        <img src="assets/screen2.png" alt="PiyoChess screenshot 2" />
+        <img src="assets/screen3.png" alt="PiyoChess screenshot 3" />
+      </div>
+    </section>
+
+    <!-- ===== Characters ===== -->
+    <section id="characters">
+      <h3 class="section-title">Characters</h3>
+      <p>
+        PiyoChess features original characters that appear in the course stories.
+        You can change these images and descriptions freely.
+      </p>
+      <div class="characters-grid">
+        <!-- ★ ここに “ぴよたそ” や敵キャラのイラストを入れる -->
+        <div class="char-card">
+          <img src="assets/char-piyo.png" alt="Piyo character" />
+          <div class="char-name">Piyo</div>
+          <div class="char-role">The main chick who loves mini chess.</div>
+        </div>
+        <div class="char-card">
+          <img src="assets/char-rival.png" alt="Rival character" />
+          <div class="char-name">Rival</div>
+          <div class="char-role">A mysterious rival watching your progress.</div>
+        </div>
+        <div class="char-card">
+          <img src="assets/char-cat.png" alt="Cafe cat" />
+          <div class="char-name">Cafe Cat</div>
+          <div class="char-role">A quiet observer who appears in story scenes.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How to Play ===== -->
+    <section id="howto">
+      <h3 class="section-title">How to Play</h3>
+      <div class="card">
+        <ol class="howto-steps">
+          <li>Open PiyoChess on your device.</li>
+          <li>Use hearts to start a battle course.</li>
+          <li>Move your pieces like in normal chess (simplified board).</li>
+          <li>Protect your king while trying to checkmate the opponent.</li>
+          <li>Clear stages to unlock new stories and characters.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq">
+      <h3 class="section-title">FAQ</h3>
+      <div class="card">
+        <div class="faq-item">
+          <strong>Q. Is PiyoChess free to play?</strong>
+          <span>A. Yes. The app is free to download. It contains advertisements and optional reward ads to get extra hearts.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. Do I need an internet connection?</strong>
+          <span>A. Basic gameplay works offline. However, ads and some features may require an internet connection.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. What data does the app collect?</strong>
+          <span>A. We do not collect personal information directly. AdMob may use device identifiers for ad serving and analytics (see Privacy Policy below).</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Privacy Policy ===== -->
+    <section id="privacy">
+      <h3 class="section-title">Privacy Policy</h3>
+      <div class="card">
+        <p>
+          PiyoChess uses Google AdMob to display banner and rewarded advertisements.
+          AdMob may collect and process certain device information (such as Advertising ID)
+          in order to personalize ads, limit ad frequency, and improve ad quality.
+        </p>
+        <p>
+          We do not collect names, email addresses, or other personal information from users
+          inside the app. Data handling is mainly done by third-party services such as Google.
+        </p>
+        <p>
+          Users can manage ad personalization settings through their device settings and
+          Google’s advertising settings page.
+        </p>
+        <p>
+          For more details about how Google uses data in advertising, please refer to:<br />
+          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">
+            https://policies.google.com/technologies/ads
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <h3 class="section-title">Contact</h3>
+      <div class="card">
+        <p>
+          If you have any questions about PiyoChess, please contact us:
+        </p>
+        <p>
+          📧 <strong>your-email@example.com</strong>
+          <!-- ★ ここをあなたの開発者用メールアドレスに変更 -->
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <div>© <span id="year"></span> PiyoChess. All rights reserved.</div>
+      <div>Made with 🐥 for quick and cozy chess battles.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
