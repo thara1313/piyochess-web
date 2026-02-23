@@ -38,7 +38,7 @@ PiyoChess ("the App") is developed and published by **Taito Harada** ("the Devel
 
 ## 7. Contact
 For support or questions, please use either of the following:
-- Email: `taito.support@example.com` (replace with the production support address)
+- Email: `taito.harada@gmail.com`
 - Support form/URL: linkable from the Support Page content in this repository
 
 ## 8. Changes to This Policy
