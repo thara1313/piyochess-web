@@ -1,513 +1,601 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PiyoChess – Cute Mini Chess Game</title>
-  <meta name="description" content="PiyoChess is a cute, fast-paced mini chess game with a heart system, simple battles, and relaxing BGM." />
+  <title>PiyoChess | Cute Mini Chess on App Store</title>
+  <meta
+    name="description"
+    content="PiyoChess is a cute and quick strategic mini chess game. Download now on the App Store."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
-      --bg: #f7f4ec;
-      --accent: #f5b041;
-      --accent-dark: #e5982c;
-      --text: #2c3e50;
-      --card: #ffffff;
+      --bg-cream: #f6f1e7;
+      --bg-warm: #efe4cf;
+      --surface: #fffaf0;
+      --ink: #26313c;
+      --muted: #617182;
+      --line: #d6cbb7;
+      --brand: #ff9f3f;
+      --brand-strong: #e57f1b;
+      --mint: #5c8f75;
+      --shadow: 0 14px 40px rgba(42, 36, 22, 0.14);
+      --radius: 22px;
+      --max: 1120px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      padding: 0;
+      background:
+        radial-gradient(circle at 12% 8%, #fff6dd 0%, transparent 28%),
+        radial-gradient(circle at 92% 14%, #ffe5ba 0%, transparent 26%),
+        linear-gradient(180deg, var(--bg-cream) 0%, var(--bg-warm) 100%);
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      line-height: 1.65;
     }
 
     a {
-      color: var(--accent-dark);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    header {
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1080px;
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    header h1 {
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(246, 241, 231, 0.78);
+      border-bottom: 1px solid rgba(214, 203, 183, 0.7);
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 1.4rem;
-      margin: 0;
+      justify-content: space-between;
+      padding: 12px 0;
     }
 
-    header h1 span.logo {
-      font-size: 1.4rem;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
     }
 
-    header nav a {
-      margin-left: 16px;
-      font-size: 0.95rem;
-      font-weight: 600;
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(150deg, #ffd47f, #ffad45);
+      box-shadow: 0 6px 16px rgba(229, 127, 27, 0.33);
+    }
+
+    .topnav {
+      display: flex;
+      gap: 16px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 700;
     }
 
     .hero {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 24px;
+      padding: 56px 0 34px;
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 32px;
+      gap: 28px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
       align-items: center;
     }
 
-    .hero-text h2 {
-      font-size: 2.4rem;
-      margin-bottom: 8px;
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--mint);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
     }
 
-    .hero-text p.lead {
+    h1 {
+      margin: 0;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(2rem, 4.8vw, 4rem);
+      line-height: 1.06;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin: 14px 0 20px;
+      color: var(--muted);
       font-size: 1.05rem;
-      margin-bottom: 16px;
+      max-width: 62ch;
     }
 
-    .hero-buttons {
+    .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 22px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
       color: #fff;
-      font-weight: 700;
-      font-size: 0.98rem;
-      cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
+      box-shadow: 0 10px 20px rgba(229, 127, 27, 0.35);
     }
 
     .btn-secondary {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 9px 18px;
+      gap: 7px;
+      font-size: 0.84rem;
+      color: #3f4d5a;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      border: 1px solid #ccc;
-      background: #fff;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
+      padding: 7px 12px;
+      font-weight: 700;
     }
 
     .hero-art {
-      background: var(--card);
-      border-radius: 24px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(255, 249, 234, 0.85));
+      border: 1px solid rgba(214, 203, 183, 0.75);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
       padding: 16px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      transform: rotate(1.2deg);
     }
 
     .hero-art img {
       width: 100%;
-      border-radius: 18px;
       display: block;
+      border-radius: var(--radius);
     }
 
-    main {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px 48px;
+    .section {
+      margin-top: 26px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding: 24px;
     }
 
-    section {
-      margin-top: 40px;
+    h2 {
+      margin: 0 0 12px;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+      line-height: 1.18;
     }
 
-    h3.section-title {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
+    p {
+      margin: 0;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .card {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      margin-top: 12px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .feature-item {
-      background: var(--card);
       border-radius: 18px;
       padding: 16px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(214, 203, 183, 0.9);
+      background: linear-gradient(180deg, #fffdf8, #fdf6e9);
     }
 
-    .feature-emoji {
-      font-size: 1.6rem;
-      margin-bottom: 4px;
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.02rem;
+      line-height: 1.35;
     }
 
-    .screenshots-grid {
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .shots {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .screenshots-grid img {
+    .shots img {
       width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-    }
-
-    .characters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .char-card {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 14px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .char-card img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 8px;
-    }
-
-    .char-name {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .howto-steps {
-      list-style: decimal;
-      padding-left: 20px;
-    }
-
-    .faq-item {
-      margin-bottom: 12px;
-    }
-
-    .faq-item strong {
       display: block;
-      margin-bottom: 4px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(61, 55, 42, 0.15);
+    }
+
+    .characters {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .char {
+      text-align: center;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fffdf8;
+      padding: 14px;
+    }
+
+    .char img {
+      width: 112px;
+      height: 112px;
+      object-fit: contain;
+    }
+
+    .char .name {
+      margin-top: 8px;
+      font-weight: 800;
+    }
+
+    .char .role {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 22px;
+      color: #3b4a58;
+    }
+
+    .list li {
+      margin-bottom: 6px;
+    }
+
+    .store-table {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+
+    .store-item {
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px;
+    }
+
+    .store-item .k {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--mint);
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .store-item .v {
+      font-weight: 700;
+      color: #344252;
     }
 
     footer {
-      background: #e1dccf;
-      padding: 20px 24px;
-      font-size: 0.85rem;
+      width: min(var(--max), calc(100% - 32px));
+      margin: 26px auto 30px;
+      color: #566474;
+      font-size: 0.88rem;
+      text-align: center;
     }
 
-    footer .inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      header nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
+    @media (max-width: 1024px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero-text h2 {
-        font-size: 2rem;
+
+      .hero-art {
+        transform: none;
+      }
+
+      .grid-3,
+      .shots,
+      .characters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .topnav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .grid-2,
+      .grid-3,
+      .shots,
+      .characters,
+      .store-table {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- ===== Header ===== -->
-  <header>
-    <h1>
-      <span class="logo">🐥</span>
-      <span>PiyoChess</span>
-    </h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#characters">Characters</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">🐥</span>
+        <span>PiyoChess</span>
+      </div>
+      <nav class="topnav">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#appstore">App Store Info</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="hero-text">
-      <h2>Relaxing mini chess with cute chicks.</h2>
-      <p class="lead">
-        PiyoChess is a compact 5×7 chess battle game.  
-        Play short matches, manage your hearts, and enjoy calm background music.
-      </p>
-      <p>
-        Designed for players who want quick brain training with a gentle, cozy atmosphere.
-      </p>
-
-      <div class="hero-buttons">
-        <!-- ★ App Store のURLをリリース後にここへ -->
-        <a class="btn-primary" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">
-          Start the game on App Store
-        </a>
-
-        <!-- ★ Google Play を出すならURLをここへ -->
-        <a class="btn-secondary" href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-          Also coming to Google Play
-        </a>
+  <div class="wrap">
+    <section class="hero" id="top">
+      <div>
+        <p class="eyebrow">Cute and Quick Strategic</p>
+        <h1>Mini chess battles that fit your day.</h1>
+        <p class="lead">
+          PiyoChess is a mobile-first mini chess game with short, readable matches on a 5x7 board.
+          Play fast strategy sessions, improve your tactics, and enjoy a cozy visual style.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/piyochess/id6755213183" target="_blank" rel="noopener noreferrer">
+            Download on the App Store
+          </a>
+          <a class="btn btn-secondary" href="#appstore">View App Store Details</a>
+        </div>
+        <div class="meta-row">
+          <span class="chip">Free</span>
+          <span class="chip">Board Category</span>
+          <span class="chip">Ages 4+</span>
+          <span class="chip">iOS 13.0+</span>
+          <span class="chip">Designed for iPad</span>
+        </div>
       </div>
-    </div>
-
-    <div class="hero-art">
-      <!-- ★ ここを実際のゲームのスクリーンショットに差し替え -->
-      <img src="assets/hero-screenshot.png" alt="PiyoChess gameplay screenshot" />
-    </div>
-  </section>
-
-  <main>
-    <!-- ===== About ===== -->
-    <section id="about">
-      <h3 class="section-title">About PiyoChess</h3>
-      <div class="card">
-        <p>
-          PiyoChess is a simple mini chess game played on a 5×7 board.
-          It focuses on short, readable positions instead of full 8×8 chess.
-          Players use hearts to start battles, and hearts slowly recover over time.
-        </p>
-        <p>
-          You can play against an AI opponent, clear courses, and unlock character
-          stories as you progress. The game is built for mobile and designed to be
-          easy to pick up and put down.
-        </p>
+      <div class="hero-art">
+        <img src="assets/hero-screenshot.png" alt="PiyoChess gameplay screenshot" />
       </div>
     </section>
 
-    <!-- ===== Features ===== -->
-    <section id="features">
-      <h3 class="section-title">Key Features</h3>
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-emoji">🎯</div>
-          <h4>Compact 5×7 Board</h4>
-          <p>
-            Short, readable battles that finish quickly. Perfect for a few minutes
-            of brain training.
-          </p>
+    <section class="section" id="about">
+      <h2>About PiyoChess</h2>
+      <p class="sub">
+        Built for quick play sessions. PiyoChess keeps classic chess tension while simplifying the board and pacing.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Compact 5x7 board</h3>
+          <p>Shorter games and clearer positions make it easy to play in small breaks.</p>
         </div>
-        <div class="feature-item">
-          <div class="feature-emoji">💛</div>
-          <h4>Heart System</h4>
-          <p>
-            Use hearts to start a battle. Hearts recover over time or by watching
-            optional reward ads.
-          </p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-emoji">🧠</div>
-          <h4>AI Opponent</h4>
-          <p>
-            Play against an AI that prioritizes king safety. Great for practicing
-            basic tactical and positional ideas.
-          </p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-emoji">📖</div>
-          <h4>Characters & Stories</h4>
-          <p>
-            Meet unique characters and unlock small episodes as you clear courses.
-          </p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-emoji">🎵</div>
-          <h4>Relaxing BGM</h4>
-          <p>
-            Calming background music and sound effects create a gentle atmosphere
-            while you play.
-          </p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-emoji">📱</div>
-          <h4>Made for Mobile</h4>
-          <p>
-            Simple controls, short sessions, and offline-friendly design
-            (except for ads).
-          </p>
+        <div class="card">
+          <h3>Story-driven progression</h3>
+          <p>Unlock episodes and character interactions as you clear battle courses.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===== Screenshots ===== -->
-    <section id="screenshots">
-      <h3 class="section-title">Screenshots</h3>
-      <p>You can replace these placeholder images with real in-game screenshots.</p>
-      <div class="screenshots-grid">
-        <!-- ★ 実際の画像に入れ替えてOK -->
+    <section class="section" id="features">
+      <h2>Key Features</h2>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Fast tactical matches</h3>
+          <p>Each battle is designed to finish quickly without losing strategic depth.</p>
+        </article>
+        <article class="card">
+          <h3>AI opponent</h3>
+          <p>Play against AI focused on king safety and practical decision making.</p>
+        </article>
+        <article class="card">
+          <h3>Mobile-first controls</h3>
+          <p>Simple interactions and clean UI tuned for touch gameplay.</p>
+        </article>
+        <article class="card">
+          <h3>Original characters</h3>
+          <p>Meet distinct characters and reveal their stories through progression.</p>
+        </article>
+        <article class="card">
+          <h3>Relaxing sound</h3>
+          <p>Calm BGM and subtle effects support a focused, cozy play rhythm.</p>
+        </article>
+        <article class="card">
+          <h3>Offline-friendly</h3>
+          <p>Main gameplay is available offline, with some features requiring connection.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="screenshots">
+      <h2>Screenshots</h2>
+      <p class="sub">Actual in-game scenes.</p>
+      <div class="shots">
         <img src="assets/screen1.png" alt="PiyoChess screenshot 1" />
         <img src="assets/screen2.png" alt="PiyoChess screenshot 2" />
         <img src="assets/screen3.png" alt="PiyoChess screenshot 3" />
       </div>
     </section>
 
-    <!-- ===== Characters ===== -->
-    <section id="characters">
-      <h3 class="section-title">Characters</h3>
-      <p>
-        PiyoChess features original characters that appear in the course stories.
-        You can change these images and descriptions freely.
-      </p>
-      <div class="characters-grid">
-        <!-- ★ ここに “ぴよたそ” や敵キャラのイラストを入れる -->
-        <div class="char-card">
+    <section class="section" id="characters">
+      <h2>Characters</h2>
+      <p class="sub">Original cast members who appear in course stories.</p>
+      <div class="characters">
+        <article class="char">
           <img src="assets/char-piyo.png" alt="Piyo character" />
-          <div class="char-name">Piyo</div>
-          <div class="char-role">The main chick who loves mini chess.</div>
-        </div>
-        <div class="char-card">
+          <div class="name">Piyo</div>
+          <div class="role">The main chick who loves mini chess.</div>
+        </article>
+        <article class="char">
           <img src="assets/char-rival.png" alt="Rival character" />
-          <div class="char-name">Rival</div>
-          <div class="char-role">A mysterious rival watching your progress.</div>
-        </div>
-        <div class="char-card">
-          <img src="assets/char-cat.png" alt="Cafe cat" />
-          <div class="char-name">Cafe Cat</div>
-          <div class="char-role">A quiet observer who appears in story scenes.</div>
-        </div>
+          <div class="name">Rival</div>
+          <div class="role">A mysterious rival who tests your growth.</div>
+        </article>
+        <article class="char">
+          <img src="assets/char-cat.png" alt="Cafe cat character" />
+          <div class="name">Cafe Cat</div>
+          <div class="role">A quiet observer in key story scenes.</div>
+        </article>
       </div>
     </section>
 
-    <!-- ===== How to Play ===== -->
-    <section id="howto">
-      <h3 class="section-title">How to Play</h3>
-      <div class="card">
-        <ol class="howto-steps">
-          <li>Open PiyoChess on your device.</li>
-          <li>Use hearts to start a battle course.</li>
-          <li>Move your pieces like in normal chess (simplified board).</li>
-          <li>Protect your king while trying to checkmate the opponent.</li>
-          <li>Clear stages to unlock new stories and characters.</li>
-        </ol>
+    <section class="section" id="howto">
+      <h2>How to Play</h2>
+      <ol class="list">
+        <li>Open PiyoChess on your iPhone or iPad.</li>
+        <li>Select a battle course and start the match.</li>
+        <li>Move pieces with chess rules adapted for the 5x7 board.</li>
+        <li>Protect your king and pressure the opponent into checkmate.</li>
+        <li>Clear stages to unlock new episodes and character scenes.</li>
+      </ol>
+    </section>
+
+    <section class="section" id="appstore">
+      <h2>App Store Information</h2>
+      <p class="sub">Pulled from the current App Store listing for PiyoChess.</p>
+      <div class="store-table">
+        <div class="store-item"><span class="k">App Name</span><span class="v">PiyoChess</span></div>
+        <div class="store-item"><span class="k">Subtitle</span><span class="v">Cute and quick strategic</span></div>
+        <div class="store-item"><span class="k">Seller</span><span class="v">Taito Harada</span></div>
+        <div class="store-item"><span class="k">Category</span><span class="v">Games / Board</span></div>
+        <div class="store-item"><span class="k">Age Rating</span><span class="v">4+</span></div>
+        <div class="store-item"><span class="k">Price</span><span class="v">Free</span></div>
+        <div class="store-item"><span class="k">Compatibility</span><span class="v">iPhone, iPad, and iPod touch (iOS 13.0 or later)</span></div>
+        <div class="store-item"><span class="k">Languages</span><span class="v">English</span></div>
+        <div class="store-item"><span class="k">Size</span><span class="v">187.4 MB</span></div>
+        <div class="store-item"><span class="k">Version</span><span class="v">1.0.3</span></div>
       </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
-    <section id="faq">
-      <h3 class="section-title">FAQ</h3>
-      <div class="card">
-        <div class="faq-item">
-          <strong>Q. Is PiyoChess free to play?</strong>
-          <span>A. Yes. The app is free to download. It contains advertisements and optional reward ads to get extra hearts.</span>
-        </div>
-        <div class="faq-item">
-          <strong>Q. Do I need an internet connection?</strong>
-          <span>A. Basic gameplay works offline. However, ads and some features may require an internet connection.</span>
-        </div>
-        <div class="faq-item">
-          <strong>Q. What data does the app collect?</strong>
-          <span>A. We do not collect personal information directly. AdMob may use device identifiers for ad serving and analytics (see Privacy Policy below).</span>
-        </div>
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Is PiyoChess free to play?</h3>
+          <p>Yes. The app is free to download on the App Store.</p>
+        </article>
+        <article class="card">
+          <h3>Do I need internet access?</h3>
+          <p>Main gameplay is available offline, while some services may require connection.</p>
+        </article>
+        <article class="card">
+          <h3>Which devices are supported?</h3>
+          <p>PiyoChess supports iPhone, iPad, and iPod touch with iOS 13.0 or later.</p>
+        </article>
+        <article class="card">
+          <h3>Who develops PiyoChess?</h3>
+          <p>The App Store listing shows the seller as Taito Harada.</p>
+        </article>
       </div>
     </section>
 
-    <!-- ===== Privacy Policy ===== -->
-    <section id="privacy">
-      <h3 class="section-title">Privacy Policy</h3>
+    <section class="section" id="privacy">
+      <h2>Privacy</h2>
+      <p class="sub">
+        The App Store listing states that this app does not collect user data.
+      </p>
       <div class="card">
         <p>
-          PiyoChess uses Google AdMob to display banner and rewarded advertisements.
-          AdMob may collect and process certain device information (such as Advertising ID)
-          in order to personalize ads, limit ad frequency, and improve ad quality.
-        </p>
-        <p>
-          We do not collect names, email addresses, or other personal information from users
-          inside the app. Data handling is mainly done by third-party services such as Google.
-        </p>
-        <p>
-          Users can manage ad personalization settings through their device settings and
-          Google’s advertising settings page.
-        </p>
-        <p>
-          For more details about how Google uses data in advertising, please refer to:<br />
-          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">
-            https://policies.google.com/technologies/ads
-          </a>
+          For details about privacy practices and third-party services, please review:
+          <a href="https://apps.apple.com/us/app/piyochess/id6755213183" target="_blank" rel="noopener noreferrer">PiyoChess on the App Store</a>
+          and
+          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Ads policies</a>.
         </p>
       </div>
     </section>
 
-    <!-- ===== Contact ===== -->
-    <section id="contact">
-      <h3 class="section-title">Contact</h3>
+    <section class="section" id="contact">
+      <h2>Contact</h2>
       <div class="card">
-        <p>
-          If you have any questions about PiyoChess, please contact us:
-        </p>
-        <p>
-          📧 <strong>taito.harada@gmail.com</strong>
-          <!-- ★ ここをあなたの開発者用メールアドレスに変更 -->
-        </p>
+        <p>Questions or support requests:</p>
+        <p><a href="mailto:taito.harada@gmail.com"><strong>taito.harada@gmail.com</strong></a></p>
       </div>
     </section>
-  </main>
+  </div>
 
   <footer>
-    <div class="inner">
-      <div>© <span id="year"></span> PiyoChess. All rights reserved.</div>
-      <div>Made with 🐥 for quick and cozy chess battles.</div>
-    </div>
+    <div>© <span id="year"></span> PiyoChess. All rights reserved.</div>
   </footer>
 
   <script>
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
