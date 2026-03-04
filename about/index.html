@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedly | アプリ紹介</title>
+  <meta
+    name="description"
+    content="Pedlyは、歩数・健康サマリー・見守りチェックインを家族で共有できるウェルビーイングアプリです。"
+  />
+  <style>
+    :root {
+      --bg: #f6faf7;
+      --surface: #ffffff;
+      --ink: #1e2a2b;
+      --muted: #5f6f71;
+      --line: #d6e2dd;
+      --brand: #2f9e79;
+      --brand-strong: #227f61;
+      --shadow: 0 10px 28px rgba(18, 38, 30, 0.1);
+      --max: 900px;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, #e7f8f0 0%, transparent 28%),
+        radial-gradient(circle at 90% 0%, #e9f2ff 0%, transparent 24%),
+        var(--bg);
+      line-height: 1.7;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 14px;
+    }
+
+    h1,
+    h2 {
+      margin: 0 0 10px;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    }
+
+    h2 {
+      font-size: clamp(1.15rem, 3.3vw, 1.5rem);
+    }
+
+    p {
+      margin: 0;
+      color: #344446;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .eyebrow {
+      color: var(--brand-strong);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .btns {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .btn-primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="panel">
+      <p class="eyebrow">Pedly</p>
+      <h1>家族で続ける、歩数と見守りのウェルビーイングアプリ</h1>
+      <p>
+        Pedly は、毎日の歩数・健康サマリー・気分チェックインを家族や大切な人と共有し、
+        無理なく習慣化をサポートするアプリです。日々の変化を見える化しながら、
+        やさしい見守りと行動改善を後押しします。
+      </p>
+      <div class="btns">
+        <a class="btn btn-primary" href="../privacy/">Privacy Policyを見る</a>
+        <a class="btn" href="../">トップへ戻る</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>主な機能</h2>
+      <ul>
+        <li><strong>歩数トラッキング:</strong> HealthKit / Google Fit の歩数を読み取り、日次・7日平均を確認できます。</li>
+        <li><strong>グループランキング:</strong> 招待リンクで家族グループを作成し、日々の歩数を比較できます。</li>
+        <li><strong>見守りチェックイン:</strong> 気分・活力・ストレスを簡単に記録し、グループ内で共有できます。</li>
+        <li><strong>AIパートナー:</strong> 入力したメモと健康サマリーをもとに、日々のアドバイスを受け取れます。</li>
+        <li><strong>プレミアム:</strong> グループ拡張、広告非表示、追加機能の利用が可能です。</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>こんな方におすすめ</h2>
+      <ul>
+        <li>家族で歩数習慣を続けたい</li>
+        <li>離れて暮らす家族のコンディションをゆるく見守りたい</li>
+        <li>毎日の体調変化を、負担なく記録したい</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>注意事項</h2>
+      <p>
+        Pedly は健康管理の補助を目的としたアプリであり、医療行為や診断を提供するものではありません。
+        体調に不安がある場合は、医療機関へご相談ください。
+      </p>
+      <p class="muted" style="margin-top: 10px;">最終更新日: 2026年3月4日</p>
+    </section>
+  </main>
+</body>
+</html>
