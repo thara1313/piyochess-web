@@ -1,9 +1,19 @@
-# PiyoChess – Official Page (Marketing Copy)
+# Pedly – App Description
 
-Welcome to the official page for PiyoChess! Here you can find updates, new features, and development notes.
+Pedly is a family wellness app that helps users build healthy walking habits together.
 
-Follow for news and sneak-peek content.
+## Core Experience
+- Track daily steps with HealthKit / Google Fit.
+- Share progress with family members in small private groups.
+- Check daily mood, energy, and stress with simple check-ins.
+- View rankings and gentle nudges to stay motivated.
+- Get AI partner advice personalized to your recent activity and notes.
 
-🌟 A cute and strategic mini-chess adventure!
+## Premium Features
+- Expanded group capacity.
+- Additional health-view features.
+- Ad-free experience for the purchaser account.
 
-Stay tuned for upcoming stages, character stories, and more.
+## Notes
+Pedly is designed to support daily wellness routines.  
+It does not provide medical diagnosis, treatment, or emergency care guidance.

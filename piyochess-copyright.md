@@ -1,10 +1,15 @@
-# PiyoChess – Copyright Information
+# Pedly – Copyright Information
 
-© 2025 Taito Harada. All rights reserved.
+© 2026 Taito Harada. All rights reserved.
 
-- Character designs: Created by collaborator artist (used with permission).
-- Backgrounds & title illustrations: AI-assisted creation (rights owned by the Developer).
-- BGM & sound effects: Licensed free materials, all allowed for commercial use.
-- Source code: © 2025 Taito Harada.
+## Ownership
+- App concept, product design, and source code: © Taito Harada
+- Original in-app text and UI compositions: © Taito Harada
+- Custom app assets created for Pedly: owned by the Developer unless otherwise stated
 
-Unauthorized copying, redistribution, or modification is prohibited.
+## Third-Party Materials
+- Open-source libraries are used under their respective licenses.
+- Platform services and SDKs (e.g., Apple, Firebase, Google) are trademarks of their respective owners.
+- Any external materials used in the app remain the property of their original rights holders.
+
+Unauthorized copying, redistribution, or commercial reuse of Pedly proprietary assets is prohibited except where allowed by applicable license terms.
