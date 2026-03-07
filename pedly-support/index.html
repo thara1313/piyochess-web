@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedly Support | サポート</title>
+  <meta
+    name="description"
+    content="Pedly support page with Japanese and English help for steps, check-ins, Premium, subscriptions, and contact information."
+  />
+  <link rel="canonical" href="https://piyochess.com/pedly-support/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Manrope:wght@400;500;700;800&amp;display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f4efe5;
+      --bg-alt: #ebe4d5;
+      --panel: rgba(255, 251, 243, 0.9);
+      --panel-strong: #fffdf8;
+      --text: #213132;
+      --muted: #5b6a67;
+      --line: rgba(76, 100, 92, 0.18);
+      --accent: #12736d;
+      --accent-strong: #0c5550;
+      --accent-soft: #d9f0ea;
+      --sun: #f3b74b;
+      --shadow: 0 20px 48px rgba(28, 44, 39, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(243, 183, 75, 0.22), transparent 28%),
+        radial-gradient(circle at top right, rgba(18, 115, 109, 0.14), transparent 30%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      color: var(--text);
+      font-family: "Manrope", "Hiragino Sans", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    code {
+      font-family: "SFMono-Regular", "Consolas", monospace;
+      font-size: 0.94em;
+      padding: 0.08em 0.36em;
+      border-radius: 6px;
+      background: rgba(18, 115, 109, 0.08);
+      color: var(--accent-strong);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .shell {
+      padding: 28px 0 36px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 251, 243, 0.72);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sun), #ffd987);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 10px 24px rgba(243, 183, 75, 0.3);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      gap: 8px;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .lang-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .lang-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(18, 115, 109, 0.28);
+    }
+
+    .hero {
+      margin-top: 22px;
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(235, 247, 244, 0.96)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      max-width: 10ch;
+    }
+
+    .lead {
+      margin-top: 16px;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover,
+    .lang-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(18, 115, 109, 0.22);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--text);
+    }
+
+    .hero-card {
+      padding: 22px;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background: rgba(19, 52, 51, 0.94);
+      color: #f2fbf9;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -30% auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(243, 183, 75, 0.38), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-card .label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(217, 240, 234, 0.14);
+      border: 1px solid rgba(217, 240, 234, 0.18);
+      color: #dff7f1;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .hero-card li {
+      margin-bottom: 8px;
+      color: rgba(242, 251, 249, 0.92);
+    }
+
+    .sections {
+      margin-top: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .panel-head {
+      margin-bottom: 16px;
+    }
+
+    .panel-head p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      background: var(--panel-strong);
+    }
+
+    .card p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .bullets,
+    .faq-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .bullets li,
+    .faq-item {
+      margin-bottom: 10px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .support-strip {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .support-pill {
+      border-radius: var(--radius-md);
+      padding: 18px;
+      background: linear-gradient(180deg, #fffdf8, #f7f4ec);
+      border: 1px solid var(--line);
+    }
+
+    .support-pill strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .support-pill p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      border: 1px solid rgba(18, 115, 109, 0.22);
+      background: linear-gradient(135deg, rgba(217, 240, 234, 0.82), rgba(255, 251, 243, 0.96));
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .mail {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent-strong);
+      word-break: break-word;
+    }
+
+    .lang-panel {
+      display: none;
+    }
+
+    .lang-panel.active {
+      display: block;
+    }
+
+    footer {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .support-strip,
+      .grid-2,
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        padding-top: 18px;
+      }
+
+      .topbar {
+        border-radius: 22px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .lang-switch {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .lang-btn {
+        flex: 1 1 0;
+      }
+
+      .panel,
+      .hero {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="badge">👣</div>
+        <div class="brand-copy">
+          <strong>Pedly Support</strong>
+          <span>Japanese / English support page</span>
+        </div>
+      </div>
+      <div class="lang-switch" role="tablist" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-lang-btn="ja" aria-pressed="true">日本語</button>
+        <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="false">English</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Support Center</p>
+          <h1>Pedly support, in two languages.</h1>
+          <div class="lang-panel active" data-lang-panel="ja">
+            <p class="lead">
+              Pedly は、家族の歩数やチェックイン状況を確認できるアプリです。毎日の歩数確認、
+              チェックイン、見守り、ランキング機能を利用できます。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact-ja">お問い合わせ</a>
+              <a class="btn btn-secondary" href="#faq-ja">よくある質問</a>
+            </div>
+          </div>
+          <div class="lang-panel" data-lang-panel="en">
+            <p class="lead">
+              Pedly is an app for checking family step counts and check-in status. It helps users
+              review daily steps, check in, watch over family members, and view rankings.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact-en">Contact Support</a>
+              <a class="btn btn-secondary" href="#faq-en">FAQ</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="label">Quick Help</div>
+          <div class="lang-panel active" data-lang-panel="ja">
+            <ul>
+              <li>Premium が反映されない場合は「購入を復元」をお試しください。</li>
+              <li>歩数が表示されない場合は Health 権限と歩数連携設定を確認してください。</li>
+              <li>通常、数営業日以内に返信します。</li>
+            </ul>
+          </div>
+          <div class="lang-panel" data-lang-panel="en">
+            <ul>
+              <li>If Premium is not reflected, try Restore Purchases.</li>
+              <li>If steps do not appear, check Health permissions and step sync settings.</li>
+              <li>Replies are usually sent within a few business days.</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <div class="sections">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>主な機能</h2>
+              <p>Pedly で日々確認できること。</p>
+            </div>
+            <div class="grid grid-2">
+              <article class="card">
+                <h3>毎日の確認</h3>
+                <p>今日の歩数確認、歩数目標の設定、毎日のチェックインを行えます。</p>
+              </article>
+              <article class="card">
+                <h3>家族・グループ機能</h3>
+                <p>家族やグループでの見守り、ランキング表示を利用できます。</p>
+              </article>
+              <article class="card">
+                <h3>Premium アップグレード</h3>
+                <p>Premium にアップグレードして追加機能を利用できます。</p>
+              </article>
+              <article class="card">
+                <h3>設定でできること</h3>
+                <p>1 日の歩数目標変更、歩数連携のオン/オフ、購入確認、復元ができます。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Premium について</h2>
+              <p>Premium で利用できる内容です。</p>
+            </div>
+            <ul class="bullets">
+              <li>メンバーの health 情報表示</li>
+              <li>心拍 / 睡眠情報の表示</li>
+              <li>AI 機能の利用</li>
+              <li>広告の非表示</li>
+              <li>グループ作成数の拡張</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>サブスクリプションサポート</h2>
+              <p>購入や反映に関する案内です。</p>
+            </div>
+            <div class="support-strip">
+              <article class="support-pill">
+                <strong>Premium が反映されない場合</strong>
+                <p><code>Settings &gt; Subscription &gt; 購入を復元</code> をお試しください。</p>
+              </article>
+              <article class="support-pill">
+                <strong>解約方法</strong>
+                <p>解約は App Store のサブスクリプション設定から行えます。</p>
+              </article>
+              <article class="support-pill">
+                <strong>反映までの時間</strong>
+                <p>通信状況により、購入状態の反映に少し時間がかかる場合があります。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel" id="faq-ja">
+            <div class="panel-head">
+              <h2>よくある質問</h2>
+              <p>よくあるトラブルと確認ポイントです。</p>
+            </div>
+            <div class="grid grid-2">
+              <article class="card faq-item">
+                <strong>歩数が表示されません</strong>
+                <p>iPhone の Health 権限を確認し、Settings で歩数連携が ON か確認してください。アプリの再起動もお試しください。</p>
+              </article>
+              <article class="card faq-item">
+                <strong>Premium が反映されません</strong>
+                <p>購入後しばらく待ってから再度確認し、<code>Settings &gt; Subscription &gt; 購入を復元</code> を実行してください。</p>
+              </article>
+              <article class="card faq-item">
+                <strong>データが読み込まれません</strong>
+                <p>通信環境を確認し、アプリを再起動してください。必要に応じて Health 権限も確認してください。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel contact-card" id="contact-ja">
+            <div>
+              <h2>お問い合わせ</h2>
+              <p>サポート窓口: 通常、数営業日以内に返信します。</p>
+              <div class="mail">taito.harada@gmail.com</div>
+            </div>
+            <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">メールを送る</a>
+          </section>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Key Features</h2>
+              <p>What users can do in Pedly every day.</p>
+            </div>
+            <div class="grid grid-2">
+              <article class="card">
+                <h3>Daily Activity</h3>
+                <p>View today's steps, set a daily step goal, and complete daily check-ins.</p>
+              </article>
+              <article class="card">
+                <h3>Family and Group Tracking</h3>
+                <p>Watch over family or group members and compare progress in rankings.</p>
+              </article>
+              <article class="card">
+                <h3>Premium Upgrade</h3>
+                <p>Upgrade to Premium to unlock additional health and convenience features.</p>
+              </article>
+              <article class="card">
+                <h3>Settings</h3>
+                <p>Change daily goals, turn step sync on or off, check subscription status, and restore purchases.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>About Premium</h2>
+              <p>Premium includes the following features.</p>
+            </div>
+            <ul class="bullets">
+              <li>Member health information display</li>
+              <li>Heart rate and sleep information</li>
+              <li>AI features</li>
+              <li>Ad-free experience</li>
+              <li>Expanded group creation capacity</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Subscription Support</h2>
+              <p>Guidance for purchases, restoration, and cancellation.</p>
+            </div>
+            <div class="support-strip">
+              <article class="support-pill">
+                <strong>If Premium is not reflected</strong>
+                <p>Try <code>Settings &gt; Subscription &gt; Restore Purchases</code> after your purchase.</p>
+              </article>
+              <article class="support-pill">
+                <strong>How to cancel</strong>
+                <p>You can cancel from the App Store subscription settings.</p>
+              </article>
+              <article class="support-pill">
+                <strong>Update delay</strong>
+                <p>Subscription status may take a little time to update depending on network conditions.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel" id="faq-en">
+            <div class="panel-head">
+              <h2>FAQ</h2>
+              <p>Common issues and the first checks to make.</p>
+            </div>
+            <div class="grid grid-2">
+              <article class="card faq-item">
+                <strong>My step count is not showing.</strong>
+                <p>Check iPhone Health permissions, confirm step sync is enabled in Settings, and restart the app.</p>
+              </article>
+              <article class="card faq-item">
+                <strong>Premium is not reflected.</strong>
+                <p>Please wait a little after purchase, then try <code>Settings &gt; Subscription &gt; Restore Purchases</code>.</p>
+              </article>
+              <article class="card faq-item">
+                <strong>My data is not loading.</strong>
+                <p>Check your network connection, restart the app, and review Health permissions if needed.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel contact-card" id="contact-en">
+            <div>
+              <h2>Contact</h2>
+              <p>Support contact. Replies are usually sent within a few business days.</p>
+              <div class="mail">taito.harada@gmail.com</div>
+            </div>
+            <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">Send Email</a>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div>© <span id="year"></span> Pedly Support</div>
+  </footer>
+
+  <script>
+    const panels = Array.from(document.querySelectorAll("[data-lang-panel]"));
+    const buttons = Array.from(document.querySelectorAll("[data-lang-btn]"));
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang === "ja" ? "ja" : "en";
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.langPanel === lang);
+      });
+
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.langBtn === lang));
+      });
+    }
+
+    const preferredLang = navigator.language && navigator.language.toLowerCase().startsWith("ja")
+      ? "ja"
+      : "en";
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.langBtn);
+      });
+    });
+
+    setLanguage(preferredLang);
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
