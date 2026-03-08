@@ -6,238 +6,918 @@
   <title>Pedly | Privacy Policy</title>
   <meta
     name="description"
-    content="Pedlyのプライバシーポリシーです。収集する情報、利用目的、第三者提供、ユーザーの権利について説明します。"
+    content="Pedly privacy policy page in Japanese, English, and Chinese."
+  />
+  <link rel="canonical" href="https://piyochess.com/privacy/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Manrope:wght@400;500;700;800&amp;display=swap"
+    rel="stylesheet"
   />
   <style>
     :root {
-      --bg: #f8f9fc;
-      --surface: #ffffff;
+      --bg: #f5f8ff;
+      --bg-alt: #ebf1ff;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #ffffff;
       --ink: #1e2630;
-      --muted: #576272;
-      --line: #d8deea;
+      --muted: #5d6979;
+      --line: rgba(79, 103, 148, 0.18);
       --brand: #2168d6;
-      --max: 980px;
-      --radius: 16px;
-      --shadow: 0 10px 26px rgba(22, 31, 46, 0.08);
+      --brand-strong: #184ca0;
+      --accent: #78b6ff;
+      --shadow: 0 20px 48px rgba(24, 40, 74, 0.1);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --max: 1120px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html,
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 0;
+      min-height: 100vh;
       background:
-        radial-gradient(circle at 0% 0%, #edf3ff 0%, transparent 30%),
-        radial-gradient(circle at 95% 0%, #f2f0ff 0%, transparent 26%),
-        var(--bg);
+        radial-gradient(circle at 0% 0%, rgba(120, 182, 255, 0.2), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(33, 104, 214, 0.14), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
       color: var(--ink);
-      font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      font-family: "Manrope", "Hiragino Sans", "Noto Sans SC", sans-serif;
       line-height: 1.72;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .wrap {
-      width: min(var(--max), calc(100% - 28px));
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 40px;
     }
 
-    .hero,
-    .panel {
-      background: var(--surface);
+    .shell {
+      padding: 28px 0 38px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
-      padding: 22px;
     }
 
-    .panel {
-      margin-top: 12px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
     }
 
-    h1,
-    h2 {
-      margin: 0 0 10px;
-      line-height: 1.28;
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--accent), #cfe3ff);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 10px 24px rgba(33, 104, 214, 0.18);
+      flex: 0 0 auto;
     }
 
-    h1 {
-      font-size: clamp(1.75rem, 4.5vw, 2.6rem);
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
     }
 
-    h2 {
-      font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+    .brand-copy span {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
     }
 
-    p {
-      margin: 0;
-      color: #313f4f;
+    .lang-switch {
+      display: inline-flex;
+      gap: 8px;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
     }
 
-    ul {
-      margin: 0;
-      padding-left: 20px;
+    .lang-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
-    li {
-      margin-bottom: 8px;
+    .lang-btn:hover,
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .lang-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(33, 104, 214, 0.24);
+    }
+
+    .hero {
+      margin-top: 22px;
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 245, 255, 0.94)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+      gap: 24px;
+      align-items: stretch;
     }
 
     .eyebrow {
-      margin: 0 0 8px;
-      color: var(--brand);
+      margin: 0 0 10px;
       font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: var(--brand);
+      font-weight: 800;
     }
 
-    .muted {
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 4.1rem);
+      max-width: 12ch;
+    }
+
+    .lead {
+      margin-top: 16px;
+      max-width: 58ch;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 1.02rem;
     }
 
-    .btns {
-      margin-top: 14px;
+    .hero-actions {
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
       border-radius: 999px;
-      padding: 9px 15px;
-      font-weight: 700;
-      border: 1px solid var(--line);
+      padding: 12px 18px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(33, 104, 214, 0.22);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.86);
       color: var(--ink);
-      background: #fff;
+    }
+
+    .hero-card {
+      padding: 22px;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background: rgba(23, 44, 84, 0.96);
+      color: #eef4ff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -30% auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(120, 182, 255, 0.34), transparent 66%);
+      pointer-events: none;
+    }
+
+    .hero-card .label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-card ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+    }
+
+    .hero-card li {
+      margin-bottom: 8px;
+      color: rgba(238, 244, 255, 0.92);
+    }
+
+    .sections {
+      margin-top: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .panel-head {
+      margin-bottom: 16px;
+    }
+
+    .panel-head p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .policy-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .policy-list li {
+      margin-bottom: 10px;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      border: 1px solid rgba(33, 104, 214, 0.2);
+      background: linear-gradient(135deg, rgba(234, 241, 255, 0.88), rgba(255, 255, 255, 0.95));
+    }
+
+    .contact-card p {
+      margin-top: 6px;
+      color: var(--muted);
+    }
+
+    .mail {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--brand-strong);
+      word-break: break-word;
+    }
+
+    .lang-panel {
+      display: none;
+    }
+
+    .lang-panel.active {
+      display: block;
+    }
+
+    footer {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        padding-top: 18px;
+      }
+
+      .topbar {
+        border-radius: 22px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .lang-switch {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .lang-btn {
+        flex: 1 1 0;
+      }
+
+      .panel,
+      .hero {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <p class="eyebrow">Pedly</p>
-      <h1>Privacy Policy</h1>
-      <p>
-        本ポリシーは、Pedly（以下「本アプリ」）における情報の取扱いについて説明するものです。
-      </p>
-      <p class="muted" style="margin-top: 8px;">最終更新日: 2026年3月4日</p>
-      <div class="btns">
-        <a class="btn" href="../pedly/">アプリ紹介ページ</a>
-        <a class="btn" href="../">トップへ戻る</a>
+  <div class="wrap shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">🔒</div>
+        <div class="brand-copy">
+          <strong>Pedly Privacy Policy</strong>
+          <span>Japanese / English / Chinese privacy page</span>
+        </div>
       </div>
-    </section>
+      <div class="lang-switch" role="tablist" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-lang-btn="ja" aria-pressed="true">日本語</button>
+        <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="false">English</button>
+        <button class="lang-btn" type="button" data-lang-btn="zh" aria-pressed="false">中文</button>
+      </div>
+    </header>
 
-    <section class="panel">
-      <h2>1. 収集する情報</h2>
-      <ul>
-        <li><strong>アカウント情報:</strong> サインイン時の UID、表示名、メールアドレス、プロフィール画像URL（利用する認証方法に応じて取得）。</li>
-        <li><strong>ヘルスデータ:</strong> 歩数、睡眠時間、心拍関連データ（ユーザーが許可した範囲）。</li>
-        <li><strong>チェックイン情報:</strong> 気分・活力・ストレス・メモ等の入力情報。</li>
-        <li><strong>グループ情報:</strong> グループ名、メンバー情報、招待トークン、ランキングに必要な歩数データ。</li>
-        <li><strong>通知関連情報:</strong> プッシュ通知配信用トークン。</li>
-        <li><strong>課金関連情報:</strong> 商品ID、取引ID、購入検証データ、購読状態。</li>
-        <li><strong>プロフィール画像:</strong> ユーザーが選択した画像（Firebase Storageへ保存）。</li>
-      </ul>
-    </section>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Privacy Policy</p>
 
-    <section class="panel">
-      <h2>2. 利用目的</h2>
-      <ul>
-        <li>歩数・健康サマリーの表示、グループ内共有、ランキング表示のため</li>
-        <li>AIパートナー機能によるメッセージ生成とパーソナライズのため</li>
-        <li>プッシュ通知、招待機能、同期機能を提供するため</li>
-        <li>サブスクリプション状態の確認・反映のため</li>
-        <li>不正利用防止、障害対応、サービス改善のため</li>
-      </ul>
-    </section>
+          <div class="lang-panel active" data-lang-panel="ja">
+            <h1>Pedly プライバシーポリシー</h1>
+            <p class="lead">
+              本ポリシーは、Pedly における情報の取扱いについて説明するものです。
+              収集する情報、利用目的、第三者サービス、ユーザーが行える設定について案内します。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact-ja">お問い合わせ</a>
+              <a class="btn btn-secondary" href="../pedly/">アプリ紹介</a>
+            </div>
+          </div>
 
-    <section class="panel">
-      <h2>3. AI機能でのデータ利用</h2>
-      <p>
-        AIパートナー機能では、メモ内容、健康サマリー、任意入力（年齢・星座など）が
-        サーバー経由で外部AIモデル（Google Gemini API）に送信される場合があります。
-        送信データは、回答生成および継続的な会話体験のために利用されます。
-      </p>
-    </section>
+          <div class="lang-panel" data-lang-panel="en">
+            <h1>Pedly Privacy Policy</h1>
+            <p class="lead">
+              This policy explains how Pedly handles user data, why data is used, which third-party
+              services are involved, and what choices users have.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact-en">Contact</a>
+              <a class="btn btn-secondary" href="../pedly/">App Overview</a>
+            </div>
+          </div>
 
-    <section class="panel">
-      <h2>4. 広告と課金</h2>
-      <ul>
-        <li>本アプリは広告配信（Google Mobile Ads）を利用する場合があります。</li>
-        <li>プレミアム購読の購入・復元には、Appleの課金基盤を利用します。</li>
-        <li>広告・課金に関するデータは、各提供事業者のポリシーに従って処理されます。</li>
-      </ul>
-    </section>
+          <div class="lang-panel" data-lang-panel="zh">
+            <h1>Pedly 隐私政策</h1>
+            <p class="lead">
+              本政策说明 Pedly 如何处理用户数据、为何使用这些数据、涉及哪些第三方服务，
+              以及用户可以进行哪些设置与选择。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact-zh">联系我们</a>
+              <a class="btn btn-secondary" href="../pedly/">应用介绍</a>
+            </div>
+          </div>
+        </div>
 
-    <section class="panel">
-      <h2>5. 第三者サービス</h2>
-      <p>本アプリは以下の第三者サービスを利用します。</p>
-      <ul>
-        <li>Firebase Authentication / Cloud Firestore / Cloud Functions / Cloud Storage / Firebase Messaging</li>
-        <li>Google Mobile Ads</li>
-        <li>Google Gemini API（AI応答生成）</li>
-        <li>Apple In-App Purchase</li>
-        <li>HealthKit / Google Fit（ユーザー許可時）</li>
-      </ul>
-    </section>
+        <aside class="hero-card">
+          <div class="lang-panel active" data-lang-panel="ja">
+            <div class="label">要点</div>
+            <ul>
+              <li>歩数、チェックイン、購読状態など、機能提供に必要な情報を扱います。</li>
+              <li>AI パートナー利用時は、一部入力情報が外部 AI モデルに送信される場合があります。</li>
+              <li>ヘルス連携や通知は、端末設定から変更できます。</li>
+            </ul>
+          </div>
 
-    <section class="panel">
-      <h2>6. 情報共有・開示</h2>
-      <ul>
-        <li>ユーザーが参加するグループ内では、歩数やチェックイン等の一部情報が共有されます。</li>
-        <li>法令に基づく要請がある場合を除き、販売目的で個人情報を第三者に提供しません。</li>
-      </ul>
-    </section>
+          <div class="lang-panel" data-lang-panel="en">
+            <div class="label">Highlights</div>
+            <ul>
+              <li>Pedly handles data needed for features such as steps, check-ins, and subscriptions.</li>
+              <li>When AI partner features are used, selected inputs may be sent to an external AI model.</li>
+              <li>Health permissions and notifications can be controlled in device settings.</li>
+            </ul>
+          </div>
 
-    <section class="panel">
-      <h2>7. 保存期間と削除</h2>
-      <ul>
-        <li>情報は、サービス提供に必要な期間保管されます。</li>
-        <li>アプリ内のアカウント削除操作により、削除対象データの削除を実行できます。</li>
-        <li>バックアップや法令対応のため、一部情報が一定期間残る場合があります。</li>
-      </ul>
-    </section>
+          <div class="lang-panel" data-lang-panel="zh">
+            <div class="label">要点</div>
+            <ul>
+              <li>Pedly 会处理步数、签到和订阅状态等用于提供功能所需的数据。</li>
+              <li>使用 AI 伙伴功能时，部分输入内容可能会发送到外部 AI 模型。</li>
+              <li>健康权限与通知都可以在设备设置中调整。</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
 
-    <section class="panel">
-      <h2>8. ユーザーの選択</h2>
-      <ul>
-        <li>ヘルスデータ連携は、端末設定およびアプリ設定で変更できます。</li>
-        <li>通知の受信は、OS設定から変更できます。</li>
-        <li>プロフィール情報は、アプリ内で更新できます。</li>
-      </ul>
-    </section>
+      <div class="sections">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>1. 収集する情報</h2>
+              <p>利用状況や許可設定に応じて、以下の情報を扱うことがあります。</p>
+            </div>
+            <ul class="policy-list">
+              <li><strong>アカウント情報:</strong> UID、表示名、メールアドレス、プロフィール画像 URL</li>
+              <li><strong>ヘルスデータ:</strong> 歩数、睡眠時間、心拍関連データなど、ユーザーが許可した範囲の情報</li>
+              <li><strong>チェックイン情報:</strong> 気分、活力、ストレス、メモなどの入力内容</li>
+              <li><strong>グループ情報:</strong> グループ名、メンバー情報、招待トークン、ランキング記録</li>
+              <li><strong>通知関連情報:</strong> Firebase Cloud Messaging 用トークン</li>
+              <li><strong>課金関連情報:</strong> 商品 ID、購入 ID、購入検証データ、購読状態</li>
+              <li><strong>プロフィール画像:</strong> ユーザーがアップロードした画像ファイル</li>
+            </ul>
+          </section>
 
-    <section class="panel">
-      <h2>9. お子様の利用</h2>
-      <p>
-        本アプリは一般利用者向けです。保護者が未成年者の情報取扱いに懸念を持つ場合は、
-        下記連絡先までお問い合わせください。
-      </p>
-    </section>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>2. 利用目的</h2>
+              <p>取得した情報は、主に次の目的で利用します。</p>
+            </div>
+            <ul class="policy-list">
+              <li>歩数トラッキングと健康サマリー表示の提供</li>
+              <li>グループランキングと家族共有機能の提供</li>
+              <li>通知、リマインダー、同期機能の提供</li>
+              <li>サブスクリプション状態と Premium 権限の管理</li>
+              <li>AI パートナー応答の継続性とパーソナライズ</li>
+              <li>不正利用防止、障害対応、サービス改善</li>
+            </ul>
+          </section>
 
-    <section class="panel">
-      <h2>10. ポリシー変更</h2>
-      <p>
-        本ポリシーは機能追加や法令変更等に応じて更新されることがあります。
-        重要な変更がある場合は、アプリまたは本ページで告知します。
-      </p>
-    </section>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>3. AI 機能でのデータ利用</h2>
+              <p>AI パートナー利用時の情報送信について説明します。</p>
+            </div>
+            <p>
+              AI パートナー機能では、メモ内容、健康サマリー、任意入力のプロフィール情報などの一部入力が
+              サーバー経由で処理され、外部 AI モデル提供者である Google Gemini API に送信される場合があります。
+              これらの情報は回答生成と会話継続性の向上のために利用されます。
+            </p>
+          </section>
 
-    <section class="panel">
-      <h2>11. お問い合わせ</h2>
-      <p>
-        本ポリシーに関するお問い合わせ:
-        <a href="mailto:taito.harada@gmail.com">taito.harada@gmail.com</a>
-      </p>
-    </section>
-  </main>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>4. 広告と課金</h2>
+              <p>広告配信およびアプリ内課金について。</p>
+            </div>
+            <ul class="policy-list">
+              <li>本アプリは Google Mobile Ads による広告を表示する場合があります。</li>
+              <li>サブスクリプション購入は Apple In-App Purchase を通じて処理されます。</li>
+              <li>関連する識別子や取引データは、各提供事業者のポリシーに従って処理されます。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>5. 第三者サービス</h2>
+              <p>Pedly では次のサービスを利用しています。</p>
+            </div>
+            <ul class="policy-list">
+              <li>Firebase Authentication</li>
+              <li>Cloud Firestore</li>
+              <li>Cloud Functions</li>
+              <li>Firebase Cloud Messaging</li>
+              <li>Firebase Storage</li>
+              <li>Google Mobile Ads</li>
+              <li>Apple In-App Purchase</li>
+              <li>HealthKit / Google Fit</li>
+              <li>Google Gemini API</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>6. 共有と開示</h2>
+              <p>情報共有の範囲と開示条件です。</p>
+            </div>
+            <ul class="policy-list">
+              <li>グループ内で共有される情報は、そのグループのメンバーに表示されます。</li>
+              <li>開発者が個人情報を販売することはありません。</li>
+              <li>法令上の要請やサービス保護のために必要な場合、情報が開示されることがあります。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>7. 保存期間と削除</h2>
+              <p>データは必要な期間保存されます。</p>
+            </div>
+            <ul class="policy-list">
+              <li>情報はサービス提供に必要な期間保管されます。</li>
+              <li>ユーザーはアプリ内のアカウント削除フローで削除を申請できます。</li>
+              <li>バックアップ、ログ、法令対応のため一部記録が一定期間残る場合があります。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>8. ユーザーの選択</h2>
+              <p>ユーザーが変更できる設定です。</p>
+            </div>
+            <ul class="policy-list">
+              <li>ヘルスデータ権限は OS 設定およびアプリ設定で変更できます。</li>
+              <li>通知権限は OS 設定で変更できます。</li>
+              <li>プロフィール情報はアプリ内で更新できます。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>9. お子様のプライバシー</h2>
+              <p>本アプリは一般利用者向けです。</p>
+            </div>
+            <p>
+              保護者が未成年者の情報取扱いに懸念を持つ場合は、下記の連絡先までお問い合わせください。
+            </p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>10. ポリシー更新</h2>
+              <p>本ポリシーは変更される場合があります。</p>
+            </div>
+            <p>
+              本ポリシーは製品変更や法的要件に応じて更新されることがあります。最新版はこのページに掲載されます。
+            </p>
+          </section>
+
+          <section class="panel contact-card" id="contact-ja">
+            <div>
+              <h2>11. お問い合わせ</h2>
+              <p>プライバシーに関する質問やサポートはこちらまでご連絡ください。</p>
+              <div class="mail">taito.harada@gmail.com</div>
+            </div>
+            <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">メールを送る</a>
+          </section>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>1. Data We Handle</h2>
+              <p>Depending on your usage and permissions, Pedly may handle the following data.</p>
+            </div>
+            <ul class="policy-list">
+              <li><strong>Account data:</strong> UID, display name, email address, and profile photo URL</li>
+              <li><strong>Health data:</strong> authorized step, sleep, and heart-rate-related values</li>
+              <li><strong>Check-in data:</strong> mood, energy, stress, and memo text entered by the user</li>
+              <li><strong>Group data:</strong> group name, membership, invite token, and ranking records</li>
+              <li><strong>Notification data:</strong> Firebase Cloud Messaging token</li>
+              <li><strong>Purchase data:</strong> product ID, purchase ID, verification data, and subscription status</li>
+              <li><strong>Profile image:</strong> image files uploaded by the user</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>2. Why We Use Data</h2>
+              <p>Data is mainly used for the following purposes.</p>
+            </div>
+            <ul class="policy-list">
+              <li>Providing step tracking and health summary features</li>
+              <li>Enabling group ranking and family sharing features</li>
+              <li>Delivering notifications, reminders, and sync functions</li>
+              <li>Managing subscription status and Premium entitlements</li>
+              <li>Improving continuity and personalization of AI partner responses</li>
+              <li>Maintaining security, preventing abuse, troubleshooting, and improving the service</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>3. AI Feature Data Use</h2>
+              <p>This section describes data handling when AI partner features are used.</p>
+            </div>
+            <p>
+              When AI partner features are used, selected inputs such as note text, health summary,
+              and optional profile context may be processed through server-side functions and sent to
+              Google Gemini API, an external AI model provider. This data is used to generate responses
+              and improve continuity of the conversation experience.
+            </p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>4. Ads and Purchases</h2>
+              <p>About advertising and in-app purchases.</p>
+            </div>
+            <ul class="policy-list">
+              <li>The app may show ads through Google Mobile Ads.</li>
+              <li>Subscriptions are processed through Apple In-App Purchase.</li>
+              <li>Related identifiers and transaction data may be processed under each provider's own policy.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>5. Third-Party Services</h2>
+              <p>Pedly uses the following services.</p>
+            </div>
+            <ul class="policy-list">
+              <li>Firebase Authentication</li>
+              <li>Cloud Firestore</li>
+              <li>Cloud Functions</li>
+              <li>Firebase Cloud Messaging</li>
+              <li>Firebase Storage</li>
+              <li>Google Mobile Ads</li>
+              <li>Apple In-App Purchase</li>
+              <li>HealthKit / Google Fit</li>
+              <li>Google Gemini API</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>6. Sharing and Disclosure</h2>
+              <p>The scope of sharing and conditions of disclosure.</p>
+            </div>
+            <ul class="policy-list">
+              <li>Data shared within a group is visible to members of that same group.</li>
+              <li>The developer does not sell personal data.</li>
+              <li>Data may be disclosed if required by law or needed to protect service security and integrity.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>7. Data Retention and Deletion</h2>
+              <p>Data is retained only as long as necessary.</p>
+            </div>
+            <ul class="policy-list">
+              <li>Data is retained for the period needed to provide the service.</li>
+              <li>Users can request deletion through the in-app account deletion flow.</li>
+              <li>Some records may remain for limited periods in backups, logs, or legal compliance contexts.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>8. Your Choices</h2>
+              <p>Settings users can control.</p>
+            </div>
+            <ul class="policy-list">
+              <li>Health permissions can be controlled in OS settings and app settings.</li>
+              <li>Push notification permissions can be controlled in OS settings.</li>
+              <li>Profile data can be updated inside the app.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>9. Children's Privacy</h2>
+              <p>Pedly is intended for general audiences.</p>
+            </div>
+            <p>
+              If a parent or guardian believes a minor's data has been handled inappropriately,
+              please contact the address below.
+            </p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>10. Policy Updates</h2>
+              <p>This policy may be updated over time.</p>
+            </div>
+            <p>
+              This Privacy Policy may be updated to reflect product changes or legal requirements.
+              The latest version is published on this page.
+            </p>
+          </section>
+
+          <section class="panel contact-card" id="contact-en">
+            <div>
+              <h2>11. Contact</h2>
+              <p>For privacy questions and support, please contact:</p>
+              <div class="mail">taito.harada@gmail.com</div>
+            </div>
+            <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">Send Email</a>
+          </section>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>1. 我们处理的数据</h2>
+              <p>根据你的使用情况和授权设置，Pedly 可能会处理以下数据。</p>
+            </div>
+            <ul class="policy-list">
+              <li><strong>账户数据:</strong> UID、显示名称、邮箱地址和头像 URL</li>
+              <li><strong>健康数据:</strong> 已授权的步数、睡眠和心率相关数据</li>
+              <li><strong>签到数据:</strong> 用户输入的心情、精力、压力和备忘内容</li>
+              <li><strong>群组数据:</strong> 群组名称、成员信息、邀请令牌和排行榜记录</li>
+              <li><strong>通知数据:</strong> Firebase Cloud Messaging 令牌</li>
+              <li><strong>购买数据:</strong> 商品 ID、购买 ID、验证数据和订阅状态</li>
+              <li><strong>头像图片:</strong> 用户上传的图片文件</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>2. 我们为何使用数据</h2>
+              <p>这些数据主要用于以下目的。</p>
+            </div>
+            <ul class="policy-list">
+              <li>提供步数追踪和健康摘要功能</li>
+              <li>提供群组排行榜和家庭共享功能</li>
+              <li>提供通知、提醒和同步功能</li>
+              <li>管理订阅状态和 Premium 权限</li>
+              <li>提升 AI 伙伴回复的连续性与个性化程度</li>
+              <li>维护安全、防止滥用、排查问题并改进服务</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>3. AI 功能中的数据使用</h2>
+              <p>本节说明使用 AI 伙伴功能时的数据处理方式。</p>
+            </div>
+            <p>
+              当你使用 AI 伙伴功能时，备忘内容、健康摘要以及可选的个人资料上下文等部分输入，
+              可能会通过服务器端函数处理，并发送给外部 AI 模型提供商 Google Gemini API。
+              这些数据用于生成回复，并提升对话体验的连续性。
+            </p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>4. 广告与购买</h2>
+              <p>关于广告投放和应用内购买。</p>
+            </div>
+            <ul class="policy-list">
+              <li>本应用可能通过 Google Mobile Ads 展示广告。</li>
+              <li>订阅购买通过 Apple In-App Purchase 处理。</li>
+              <li>相关标识符和交易数据会按照各服务提供商自身政策处理。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>5. 第三方服务</h2>
+              <p>Pedly 使用以下服务。</p>
+            </div>
+            <ul class="policy-list">
+              <li>Firebase Authentication</li>
+              <li>Cloud Firestore</li>
+              <li>Cloud Functions</li>
+              <li>Firebase Cloud Messaging</li>
+              <li>Firebase Storage</li>
+              <li>Google Mobile Ads</li>
+              <li>Apple In-App Purchase</li>
+              <li>HealthKit / Google Fit</li>
+              <li>Google Gemini API</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>6. 共享与披露</h2>
+              <p>数据共享范围与披露条件。</p>
+            </div>
+            <ul class="policy-list">
+              <li>在群组内共享的数据，仅对该群组成员可见。</li>
+              <li>开发者不会出售个人数据。</li>
+              <li>如法律要求或为保护服务安全与完整性，数据可能会被披露。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>7. 数据保存与删除</h2>
+              <p>数据只会在必要期限内保存。</p>
+            </div>
+            <ul class="policy-list">
+              <li>数据会在提供服务所需期间内保存。</li>
+              <li>用户可以通过应用内账户删除流程请求删除数据。</li>
+              <li>部分记录可能因备份、日志或法律合规需要而在有限时间内保留。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>8. 你的选择</h2>
+              <p>用户可以控制的设置。</p>
+            </div>
+            <ul class="policy-list">
+              <li>健康权限可在系统设置和应用设置中调整。</li>
+              <li>推送通知权限可在系统设置中调整。</li>
+              <li>个人资料数据可在应用内更新。</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>9. 儿童隐私</h2>
+              <p>Pedly 面向普通用户使用。</p>
+            </div>
+            <p>
+              如果家长或监护人认为未成年人的数据被不当处理，请通过下方联系方式与我们联系。
+            </p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>10. 政策更新</h2>
+              <p>本政策可能会随时间更新。</p>
+            </div>
+            <p>
+              本隐私政策可能因产品变更或法律要求而更新。最新版本将发布在本页面。
+            </p>
+          </section>
+
+          <section class="panel contact-card" id="contact-zh">
+            <div>
+              <h2>11. 联系方式</h2>
+              <p>如有隐私相关问题或支持需求，请联系：</p>
+              <div class="mail">taito.harada@gmail.com</div>
+            </div>
+            <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">发送邮件</a>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div>Last updated: March 5, 2026</div>
+  </footer>
+
+  <script>
+    const panels = Array.from(document.querySelectorAll("[data-lang-panel]"));
+    const buttons = Array.from(document.querySelectorAll("[data-lang-btn]"));
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang === "ja" ? "ja" : lang === "zh" ? "zh-Hans" : "en";
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.langPanel === lang);
+      });
+
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.langBtn === lang));
+      });
+    }
+
+    const browserLang = navigator.language ? navigator.language.toLowerCase() : "";
+    const preferredLang = browserLang.startsWith("ja")
+      ? "ja"
+      : browserLang.startsWith("zh")
+        ? "zh"
+        : "en";
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.langBtn);
+      });
+    });
+
+    setLanguage(preferredLang);
+  </script>
 </body>
 </html>
