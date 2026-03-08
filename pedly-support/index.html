@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedly Support | サポート</title>
+  <title>Pedly Support | Support</title>
   <meta
     name="description"
-    content="Pedly support page with Japanese and English help for steps, check-ins, Premium, subscriptions, and contact information."
+    content="Pedly support page with Japanese, English, and Chinese help for steps, check-ins, Premium, subscriptions, and contact information."
   />
   <link rel="canonical" href="https://piyochess.com/pedly-support/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,7 +51,7 @@
         radial-gradient(circle at top right, rgba(18, 115, 109, 0.14), transparent 30%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
       color: var(--text);
-      font-family: "Manrope", "Hiragino Sans", sans-serif;
+      font-family: "Manrope", "Hiragino Sans", "Noto Sans SC", sans-serif;
       line-height: 1.65;
     }
 
@@ -67,11 +67,6 @@
       border-radius: 6px;
       background: rgba(18, 115, 109, 0.08);
       color: var(--accent-strong);
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     .wrap {
@@ -195,7 +190,7 @@
 
     h1 {
       font-size: clamp(2.3rem, 5vw, 4.3rem);
-      max-width: 10ch;
+      max-width: 12ch;
     }
 
     .lead {
@@ -333,8 +328,7 @@
       color: var(--muted);
     }
 
-    .bullets,
-    .faq-list {
+    .bullets {
       margin: 0;
       padding-left: 20px;
     }
@@ -462,12 +456,13 @@
         <div class="badge">👣</div>
         <div class="brand-copy">
           <strong>Pedly Support</strong>
-          <span>Japanese / English support page</span>
+          <span>Japanese / English / Chinese support page</span>
         </div>
       </div>
       <div class="lang-switch" role="tablist" aria-label="Language switcher">
         <button class="lang-btn" type="button" data-lang-btn="ja" aria-pressed="true">日本語</button>
         <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="false">English</button>
+        <button class="lang-btn" type="button" data-lang-btn="zh" aria-pressed="false">中文</button>
       </div>
     </header>
 
@@ -475,8 +470,9 @@
       <section class="hero">
         <div>
           <p class="eyebrow">Support Center</p>
-          <h1>Pedly support, in two languages.</h1>
+
           <div class="lang-panel active" data-lang-panel="ja">
+            <h1>Pedly サポート</h1>
             <p class="lead">
               Pedly は、家族の歩数やチェックイン状況を確認できるアプリです。毎日の歩数確認、
               チェックイン、見守り、ランキング機能を利用できます。
@@ -484,9 +480,12 @@
             <div class="hero-actions">
               <a class="btn btn-primary" href="#contact-ja">お問い合わせ</a>
               <a class="btn btn-secondary" href="#faq-ja">よくある質問</a>
+              <a class="btn btn-secondary" href="../pedly/">アプリ紹介</a>
             </div>
           </div>
+
           <div class="lang-panel" data-lang-panel="en">
+            <h1>Pedly support</h1>
             <p class="lead">
               Pedly is an app for checking family step counts and check-in status. It helps users
               review daily steps, check in, watch over family members, and view rankings.
@@ -494,24 +493,49 @@
             <div class="hero-actions">
               <a class="btn btn-primary" href="#contact-en">Contact Support</a>
               <a class="btn btn-secondary" href="#faq-en">FAQ</a>
+              <a class="btn btn-secondary" href="../pedly/">App Overview</a>
+            </div>
+          </div>
+
+          <div class="lang-panel" data-lang-panel="zh">
+            <h1>Pedly 支持中心</h1>
+            <p class="lead">
+              Pedly 是一款可查看家人步数与签到状态的应用。你可以查看每日步数、完成签到、
+              关注家人近况，并查看排行榜。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact-zh">联系支持</a>
+              <a class="btn btn-secondary" href="#faq-zh">常见问题</a>
+              <a class="btn btn-secondary" href="../pedly/">应用介绍</a>
             </div>
           </div>
         </div>
 
         <aside class="hero-card">
-          <div class="label">Quick Help</div>
           <div class="lang-panel active" data-lang-panel="ja">
+            <div class="label">クイックヘルプ</div>
             <ul>
               <li>Premium が反映されない場合は「購入を復元」をお試しください。</li>
               <li>歩数が表示されない場合は Health 権限と歩数連携設定を確認してください。</li>
               <li>通常、数営業日以内に返信します。</li>
             </ul>
           </div>
+
           <div class="lang-panel" data-lang-panel="en">
+            <div class="label">Quick Help</div>
             <ul>
               <li>If Premium is not reflected, try Restore Purchases.</li>
               <li>If steps do not appear, check Health permissions and step sync settings.</li>
               <li>Replies are usually sent within a few business days.</li>
+            </ul>
+          </div>
+
+          <div class="lang-panel" data-lang-panel="zh">
+            <div class="label">快速帮助</div>
+            <ul>
+              <li>如果 Premium 未生效，请尝试“恢复购买”。</li>
+              <li>如果步数没有显示，请检查 Health 权限和步数同步设置。</li>
+              <li>通常会在几个工作日内回复。</li>
             </ul>
           </div>
         </aside>
@@ -701,6 +725,98 @@
             <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">Send Email</a>
           </section>
         </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>主要功能</h2>
+              <p>Pedly 中每天都可以查看和使用的内容。</p>
+            </div>
+            <div class="grid grid-2">
+              <article class="card">
+                <h3>每日活动</h3>
+                <p>查看今日步数、设置每日步数目标，并完成每日签到。</p>
+              </article>
+              <article class="card">
+                <h3>家庭与群组</h3>
+                <p>关注家人或群组成员的状态，并通过排行榜比较进度。</p>
+              </article>
+              <article class="card">
+                <h3>Premium 升级</h3>
+                <p>升级到 Premium，解锁更多健康与便利功能。</p>
+              </article>
+              <article class="card">
+                <h3>设置</h3>
+                <p>修改每日目标、开启或关闭步数同步、确认订阅状态，并恢复购买。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>关于 Premium</h2>
+              <p>Premium 包含以下功能。</p>
+            </div>
+            <ul class="bullets">
+              <li>查看成员健康信息</li>
+              <li>显示心率和睡眠信息</li>
+              <li>AI 功能</li>
+              <li>无广告体验</li>
+              <li>扩展可创建群组数量</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>订阅支持</h2>
+              <p>关于购买、恢复和取消订阅的说明。</p>
+            </div>
+            <div class="support-strip">
+              <article class="support-pill">
+                <strong>如果 Premium 未生效</strong>
+                <p>购买后请尝试 <code>Settings &gt; Subscription &gt; Restore Purchases</code>。</p>
+              </article>
+              <article class="support-pill">
+                <strong>如何取消</strong>
+                <p>你可以在 App Store 的订阅设置中取消。</p>
+              </article>
+              <article class="support-pill">
+                <strong>状态更新延迟</strong>
+                <p>根据网络状况，订阅状态更新可能需要一些时间。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel" id="faq-zh">
+            <div class="panel-head">
+              <h2>常见问题</h2>
+              <p>常见问题以及建议先检查的项目。</p>
+            </div>
+            <div class="grid grid-2">
+              <article class="card faq-item">
+                <strong>我的步数没有显示。</strong>
+                <p>请检查 iPhone 的 Health 权限，确认设置中已开启步数同步，然后重新启动应用。</p>
+              </article>
+              <article class="card faq-item">
+                <strong>Premium 没有生效。</strong>
+                <p>购买后请稍等片刻，再尝试 <code>Settings &gt; Subscription &gt; Restore Purchases</code>。</p>
+              </article>
+              <article class="card faq-item">
+                <strong>我的数据没有加载。</strong>
+                <p>请检查网络连接，重新启动应用，并在需要时检查 Health 权限。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel contact-card" id="contact-zh">
+            <div>
+              <h2>联系支持</h2>
+              <p>支持邮箱。通常会在几个工作日内回复。</p>
+              <div class="mail">taito.harada@gmail.com</div>
+            </div>
+            <a class="btn btn-primary" href="mailto:taito.harada@gmail.com">发送邮件</a>
+          </section>
+        </div>
       </div>
     </main>
   </div>
@@ -714,7 +830,7 @@
     const buttons = Array.from(document.querySelectorAll("[data-lang-btn]"));
 
     function setLanguage(lang) {
-      document.documentElement.lang = lang === "ja" ? "ja" : "en";
+      document.documentElement.lang = lang === "ja" ? "ja" : lang === "zh" ? "zh-Hans" : "en";
 
       panels.forEach((panel) => {
         panel.classList.toggle("active", panel.dataset.langPanel === lang);
@@ -725,9 +841,12 @@
       });
     }
 
-    const preferredLang = navigator.language && navigator.language.toLowerCase().startsWith("ja")
+    const browserLang = navigator.language ? navigator.language.toLowerCase() : "";
+    const preferredLang = browserLang.startsWith("ja")
       ? "ja"
-      : "en";
+      : browserLang.startsWith("zh")
+        ? "zh"
+        : "en";
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
