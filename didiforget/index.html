@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Didiforget | 持ち物チェックと外出リマインド</title>
+  <meta
+    name="description"
+    content="Didiforget は、カメラ確認、AI 持ち物チェック、天気提案、外出時リマインドをまとめた忘れ物対策アプリです。"
+  />
+  <link rel="canonical" href="https://piyochess.com/didiforget/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --bg-alt: #ece6d8;
+      --panel: rgba(255, 251, 243, 0.92);
+      --line: rgba(90, 81, 58, 0.16);
+      --ink: #273038;
+      --muted: #5f6a74;
+      --brand: #c76d2c;
+      --brand-strong: #9e4e18;
+      --accent: #3f7b78;
+      --accent-soft: #dceceb;
+      --shadow: 0 20px 48px rgba(38, 40, 34, 0.11);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(199, 109, 44, 0.18), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(63, 123, 120, 0.16), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      color: var(--ink);
+      font-family: "Manrope", "Hiragino Sans", "Noto Sans SC", sans-serif;
+      line-height: 1.68;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .shell {
+      padding: 28px 0 40px;
+    }
+
+    .topbar,
+    .hero,
+    .section {
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(255, 251, 243, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #f3be7d, #d97936);
+      color: #fffaf5;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(199, 109, 44, 0.28);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .brand-copy span {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      gap: 8px;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .lang-btn,
+    .btn {
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .lang-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(199, 109, 44, 0.24);
+    }
+
+    .hero {
+      margin-top: 22px;
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(255, 253, 248, 0.98), rgba(244, 238, 228, 0.96)),
+        var(--panel);
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 5vw, 4.45rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+    }
+
+    .lead {
+      margin-top: 16px;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 1.04rem;
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(199, 109, 44, 0.22);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+    }
+
+    .hero-card {
+      padding: 24px;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background: linear-gradient(180deg, rgba(38, 50, 57, 0.96), rgba(55, 73, 83, 0.94));
+      color: #eef5f8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -14% -34% auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(243, 190, 125, 0.34), transparent 66%);
+      pointer-events: none;
+    }
+
+    .hero-card .label {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-card ol {
+      margin: 16px 0 0;
+      padding-left: 20px;
+    }
+
+    .hero-card li + li {
+      margin-top: 12px;
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .section {
+      margin-top: 20px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 251, 243, 0.92);
+      padding: clamp(22px, 3.4vw, 34px);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .sub {
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffdf9, #f8f2e8);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .card ul,
+    .card ol {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .lang-panel {
+      display: none;
+    }
+
+    .lang-panel.active {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding: 0 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .shell {
+        padding-top: 16px;
+      }
+
+      .lang-switch {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .lang-btn {
+        flex: 1 1 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">Df</div>
+        <div class="brand-copy">
+          <strong>Didiforget</strong>
+          <span>Carry check, weather cues, and leaving-home reminders</span>
+        </div>
+      </div>
+      <div class="lang-switch" role="tablist" aria-label="Language switch">
+        <button class="lang-btn" type="button" data-lang="ja" aria-pressed="true">日本語</button>
+        <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">English</button>
+        <button class="lang-btn" type="button" data-lang="zh" aria-pressed="false">中文</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <p class="eyebrow">Smart outing checklist</p>
+          <h1>忘れ物しそうな瞬間に、先回りして知らせる。</h1>
+          <p class="lead">
+            Didiforget は、カメラで持ち物を確認し、AI が候補を整理し、天気や外出タイミングに合わせて通知する忘れ物対策アプリです。
+            初回案内では、位置情報を求める前に「外出した際に通知を受け取りますか」と説明し、自宅から出る時や、一定時間過ごした場所から移動する時にリマインドできることを明確に伝えます。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/didiforget/privacy/">Privacy Policy</a>
+            <a class="btn btn-secondary" href="/didiforget-support/">Support</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">カメラで持ち物確認</span>
+            <span class="pill">外出時通知</span>
+            <span class="pill">天気に応じた提案</span>
+            <span class="pill">サインイン時のみクラウド同期</span>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <p class="eyebrow">Smart outing checklist</p>
+          <h1>Get a reminder right before you leave something behind.</h1>
+          <p class="lead">
+            Didiforget helps users confirm belongings with the camera, review likely items with AI, and receive reminder notifications based on weather and movement.
+            During onboarding, the app explains reminder notifications before asking for location access, including reminders when leaving home or when moving away from a place after staying there for a while.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/didiforget/privacy/">Privacy Policy</a>
+            <a class="btn btn-secondary" href="/didiforget-support/">Support</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Camera item checks</span>
+            <span class="pill">Leaving-home reminders</span>
+            <span class="pill">Weather-aware suggestions</span>
+            <span class="pill">Cloud sync only when signed in</span>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <p class="eyebrow">Smart outing checklist</p>
+          <h1>在你可能忘东西之前，先提醒你。</h1>
+          <p class="lead">
+            Didiforget 是一款防止遗忘物品的应用，可以用相机确认随身物品，由 AI 整理候选物品，并根据天气和外出时机发送提醒通知。
+            在首次引导中，应用会先说明“是否希望在外出时接收提醒通知”，再请求位置权限，并明确说明可在离开家时或离开停留一段时间的地点时进行提醒。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/didiforget/privacy/">Privacy Policy</a>
+            <a class="btn btn-secondary" href="/didiforget-support/">Support</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">相机确认物品</span>
+            <span class="pill">外出提醒通知</span>
+            <span class="pill">根据天气给出建议</span>
+            <span class="pill">仅登录时云端同步</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <span class="label">First-use flow</span>
+          <div class="lang-panel active" data-lang-panel="ja">
+            <ol>
+              <li>
+                <strong>カメラ確認を案内</strong>
+                撮影した写真や選択した画像を使って、持ち物候補を見つける流れを最初に説明します。
+              </li>
+              <li>
+                <strong>通知の価値を先に説明</strong>
+                位置情報の許可前に、外出時の通知を受け取るかを確認し、通知の目的を理解した上で設定できます。
+              </li>
+              <li>
+                <strong>位置情報は用途を限定</strong>
+                現在地の天気表示と、自宅を出る時や一定時間いた場所から離れる時の通知に使います。電車など高速移動中は精度の限界があります。
+              </li>
+            </ol>
+          </div>
+          <div class="lang-panel" data-lang-panel="en">
+            <ol>
+              <li>
+                <strong>Explain the camera check first</strong>
+                The app starts by showing how a captured or selected image is used to identify likely belongings.
+              </li>
+              <li>
+                <strong>Explain reminders before location access</strong>
+                Users are asked whether they want outing reminders before the app asks for location permission.
+              </li>
+              <li>
+                <strong>Limit location use to clear cases</strong>
+                Location is used for local weather and reminder triggers when leaving home or leaving a place after staying there. Accuracy is limited during fast transit such as trains.
+              </li>
+            </ol>
+          </div>
+          <div class="lang-panel" data-lang-panel="zh">
+            <ol>
+              <li>
+                <strong>先说明相机检查</strong>
+                应用会先说明如何使用拍摄或选择的图片来识别可能携带的物品。
+              </li>
+              <li>
+                <strong>先解释提醒价值，再请求位置权限</strong>
+                在请求位置权限之前，会先询问用户是否希望在外出时收到提醒通知。
+              </li>
+              <li>
+                <strong>将位置用途限制在明确场景</strong>
+                位置仅用于本地天气显示，以及离开家或离开停留一段时间地点时的提醒。像乘坐电车这类高速移动场景，精度会受限。
+              </li>
+            </ol>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <div class="section-head">
+            <div>
+              <h2>ユーザーに最初に伝えること</h2>
+              <p class="sub">
+                Didiforget では、権限要求を先に出すのではなく、何のために使うかを先に説明する導線を前提にしています。
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>カメラの説明</h3>
+              <p>
+                カメラは持ち物チェックのために利用します。撮影画像や選択画像を AI が解析し、財布、鍵、充電器などの候補を整理して表示します。
+              </p>
+            </article>
+            <article class="card">
+              <h3>通知の説明</h3>
+              <p>
+                位置情報を求める前に、外出した際に通知を受け取るかを確認します。忘れ物の可能性が高い場面でのみ通知することを明示します。
+              </p>
+            </article>
+            <article class="card">
+              <h3>位置情報の説明</h3>
+              <p>
+                位置情報は、天気表示と外出時リマインドに限定して使います。自宅から出る時や、一定時間過ごした場所から移動する時を通知候補にします。
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <div class="section-head">
+            <div>
+              <h2>What users see first</h2>
+              <p class="sub">
+                Didiforget is designed to explain why a permission matters before prompting for it.
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>Camera explanation</h3>
+              <p>
+                The camera is used for item checks. Captured or selected images are analyzed so the app can suggest likely belongings such as a wallet, keys, or charger.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Notification explanation</h3>
+              <p>
+                Before requesting location access, the app asks whether the user wants reminder notifications when going out and explains that alerts are limited to likely forgetful moments.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Location explanation</h3>
+              <p>
+                Location is used only for weather display and outing reminders, such as when leaving home or leaving a place after staying there for some time.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <div class="section-head">
+            <div>
+              <h2>用户最先看到的说明</h2>
+              <p class="sub">
+                Didiforget 的设计原则是，不先弹出权限请求，而是先说明权限的具体用途。
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>相机说明</h3>
+              <p>
+                相机用于随身物品检查。应用会分析拍摄或选择的图片，并整理出钱包、钥匙、充电器等可能需要携带的物品。
+              </p>
+            </article>
+            <article class="card">
+              <h3>通知说明</h3>
+              <p>
+                在请求位置权限之前，应用会先询问用户是否希望在外出时收到提醒通知，并说明提醒只会用于可能发生遗忘的场景。
+              </p>
+            </article>
+            <article class="card">
+              <h3>位置说明</h3>
+              <p>
+                位置仅用于天气显示和外出提醒，例如离开家时，或离开停留一段时间的地点时。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <div class="section-head">
+            <div>
+              <h2>主な機能</h2>
+              <p class="sub">忘れ物を減らすための判断材料を、撮影・状況・移動の3方向からまとめます。</p>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>AI 持ち物チェック</h3>
+              <p>写真から持ち物候補を見つけ、チェックリスト化します。テンプレートや履歴とも組み合わせられます。</p>
+            </article>
+            <article class="card">
+              <h3>天気に応じた提案</h3>
+              <p>現在地の天気を参考に、傘や上着などの候補を追加提案します。</p>
+            </article>
+            <article class="card">
+              <h3>外出時の通知</h3>
+              <p>通知を許可した場合、忘れ物が起きやすい外出タイミングでリマインドを送ります。</p>
+            </article>
+            <article class="card">
+              <h3>端末間同期</h3>
+              <p>サインイン時のみ設定、テンプレート、履歴、振り返りメモをクラウド同期します。ゲスト利用は端末内保存のみです。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <div class="section-head">
+            <div>
+              <h2>Core features</h2>
+              <p class="sub">Didiforget combines image checks, context, and movement cues to reduce forgotten items.</p>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>AI item checks</h3>
+              <p>Images are used to build a checklist of likely belongings and can be combined with templates and history.</p>
+            </article>
+            <article class="card">
+              <h3>Weather-aware suggestions</h3>
+              <p>Local weather can add context such as bringing an umbrella or an extra layer.</p>
+            </article>
+            <article class="card">
+              <h3>Outing reminders</h3>
+              <p>If notifications are enabled, the app can send reminders around moments that are likely to lead to forgotten items.</p>
+            </article>
+            <article class="card">
+              <h3>Cross-device sync</h3>
+              <p>Settings, templates, history, and reflection notes sync only when the user signs in. Guest use stays local to the device.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <div class="section-head">
+            <div>
+              <h2>核心功能</h2>
+              <p class="sub">Didiforget 从图像、情境和移动时机三方面提供判断材料，帮助减少遗忘物品。</p>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>AI 物品检查</h3>
+              <p>从图片中找出可能需要携带的物品，并整理成检查清单，也可以结合模板和历史记录一起使用。</p>
+            </article>
+            <article class="card">
+              <h3>天气相关建议</h3>
+              <p>参考当前位置天气，补充建议雨伞、外套等可能需要携带的物品。</p>
+            </article>
+            <article class="card">
+              <h3>外出提醒</h3>
+              <p>如果允许通知，应用会在容易遗忘物品的外出时机发送提醒。</p>
+            </article>
+            <article class="card">
+              <h3>多设备同步</h3>
+              <p>只有在登录后，设置、模板、历史和回顾笔记才会同步到云端。访客模式仅保存在本机。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <p class="footer">Contact: taito.harada@gmail.com</p>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-lang]");
+    const panels = document.querySelectorAll("[data-lang-panel]");
+
+    function setLanguage(lang) {
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.langPanel === lang);
+      });
+
+      document.documentElement.lang = lang === "ja" ? "ja" : lang === "zh" ? "zh-CN" : "en";
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+  </script>
+</body>
+</html>

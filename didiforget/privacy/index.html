@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Didiforget | Privacy Policy</title>
+  <meta
+    name="description"
+    content="Didiforget privacy policy in Japanese and English."
+  />
+  <link rel="canonical" href="https://piyochess.com/didiforget/privacy/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --bg-alt: #e9eff8;
+      --panel: rgba(255, 255, 255, 0.93);
+      --line: rgba(68, 96, 132, 0.16);
+      --ink: #1e2a35;
+      --muted: #607081;
+      --brand: #2d6bb0;
+      --brand-strong: #1d4e82;
+      --accent: #7fb1f0;
+      --shadow: 0 20px 48px rgba(26, 40, 64, 0.11);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(127, 177, 240, 0.22), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(45, 107, 176, 0.14), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      color: var(--ink);
+      font-family: "Manrope", "Hiragino Sans", "Noto Sans SC", sans-serif;
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .shell {
+      padding: 28px 0 40px;
+    }
+
+    .topbar,
+    .hero,
+    .section {
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--accent), #a9d0ff);
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(45, 107, 176, 0.2);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .brand-copy span {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      gap: 8px;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .lang-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(45, 107, 176, 0.24);
+    }
+
+    .hero {
+      margin-top: 22px;
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 245, 255, 0.96)),
+        var(--panel);
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 2.8vw, 2.25rem);
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      margin-top: 16px;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-card {
+      padding: 24px;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background: linear-gradient(180deg, rgba(26, 45, 74, 0.96), rgba(34, 61, 99, 0.94));
+      color: #eef5ff;
+    }
+
+    .hero-card ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+    }
+
+    .hero-card li + li {
+      margin-top: 10px;
+    }
+
+    .section {
+      margin-top: 20px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.94);
+      padding: clamp(22px, 3.4vw, 34px);
+    }
+
+    .section + .section {
+      margin-top: 18px;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f7faff);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+
+    .card p,
+    .card li,
+    .card dd {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    dl {
+      margin: 0;
+    }
+
+    dt {
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    dt:first-child {
+      margin-top: 0;
+    }
+
+    dd {
+      margin: 6px 0 0;
+    }
+
+    .lang-panel {
+      display: none;
+    }
+
+    .lang-panel.active {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .shell {
+        padding-top: 16px;
+      }
+
+      .lang-switch {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .lang-btn {
+        flex: 1 1 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">Df</div>
+        <div class="brand-copy">
+          <strong>Didiforget Privacy Policy</strong>
+          <span>Japanese, English, and Chinese</span>
+        </div>
+      </div>
+      <div class="lang-switch" role="tablist" aria-label="Language switch">
+        <button class="lang-btn" type="button" data-lang="ja" aria-pressed="true">日本語</button>
+        <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">English</button>
+        <button class="lang-btn" type="button" data-lang="zh" aria-pressed="false">中文</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <p class="eyebrow">Last updated: 2026-03-10</p>
+          <h1>Didiforget Privacy Policy</h1>
+          <p class="lead">
+            Didiforget は、持ち物チェック、AI 判定、天気提案、外出時通知、端末間同期のために必要な範囲でデータを取り扱います。
+            このポリシーは、取得する情報、その利用目的、保存方法、ユーザーが行える操作について説明します。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/didiforget-support/">Support</a>
+            <a class="btn btn-secondary" href="/didiforget/">App Page</a>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <p class="eyebrow">Last updated: March 10, 2026</p>
+          <h1>Didiforget Privacy Policy</h1>
+          <p class="lead">
+            Didiforget handles data only as needed for item checks, AI suggestions, weather-aware prompts, outing reminders, and cross-device sync.
+            This policy explains what data is handled, why it is used, how it is stored, and what controls users have.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/didiforget-support/">Support</a>
+            <a class="btn btn-secondary" href="/didiforget/">App Page</a>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <p class="eyebrow">最后更新：2026年3月10日</p>
+          <h1>Didiforget 隐私政策</h1>
+          <p class="lead">
+            Didiforget 仅在提供物品检查、AI 建议、天气相关提示、外出提醒和多设备同步所必需的范围内处理数据。
+            本政策说明应用会处理哪些数据、为何使用这些数据、如何保存，以及用户可以进行哪些控制。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/didiforget-support/">Support</a>
+            <a class="btn btn-secondary" href="/didiforget/">App Page</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="lang-panel active" data-lang-panel="ja">
+            <h3>事業者情報</h3>
+            <ul>
+              <li>事業者名: Taito Harada</li>
+              <li>連絡先: taito.harada@gmail.com</li>
+              <li>ポリシー最終更新日: 2026年3月10日</li>
+            </ul>
+          </div>
+          <div class="lang-panel" data-lang-panel="en">
+            <h3>Business Information</h3>
+            <ul>
+              <li>Operator: Taito Harada</li>
+              <li>Contact: taito.harada@gmail.com</li>
+              <li>Last updated: March 10, 2026</li>
+            </ul>
+          </div>
+          <div class="lang-panel" data-lang-panel="zh">
+            <h3>运营者信息</h3>
+            <ul>
+              <li>运营者：Taito Harada</li>
+              <li>联系方式：taito.harada@gmail.com</li>
+              <li>最后更新：2026年3月10日</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>1. 取得・利用するデータ</h2>
+          <p class="sub">Didiforget は、利用機能と権限設定に応じて次の情報を取り扱います。</p>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>アカウント情報</h3>
+              <p>Google または Apple サインイン時に、uid、表示名、必要に応じてメールアドレスを取り扱います。</p>
+            </article>
+            <article class="card">
+              <h3>写真・カメラ</h3>
+              <p>撮影または選択した写真を持ち物チェックと AI 判定に利用します。撮影画像を自動で端末の写真ライブラリへ保存することはありません。</p>
+            </article>
+            <article class="card">
+              <h3>位置情報</h3>
+              <p>現在地の天気表示、および外出時リマインド通知のために利用します。</p>
+            </article>
+            <article class="card">
+              <h3>通知関連情報</h3>
+              <p>通知許可状態、FCM または APNs トークンを通知配信に利用します。</p>
+            </article>
+            <article class="card">
+              <h3>アプリ内データ</h3>
+              <p>設定、テンプレート、履歴、振り返りメモ、利用回数などをアプリ機能提供のために扱います。</p>
+            </article>
+            <article class="card">
+              <h3>クラウド保存</h3>
+              <p>サインイン時のみ Firestore に保存します。ゲスト利用時はクラウド保存を行いません。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>1. Data We Handle</h2>
+          <p class="sub">Depending on app features and permission choices, Didiforget may handle the following data.</p>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>Account data</h3>
+              <p>When users sign in with Google or Apple, the app may handle their uid, display name, and email address when needed.</p>
+            </article>
+            <article class="card">
+              <h3>Photos and camera</h3>
+              <p>Captured or selected images are used for item checks and AI suggestions. Photos are not automatically saved to the device photo library.</p>
+            </article>
+            <article class="card">
+              <h3>Location</h3>
+              <p>Location is used for local weather display and outing reminder notifications.</p>
+            </article>
+            <article class="card">
+              <h3>Notification-related data</h3>
+              <p>Notification permission status and FCM or APNs tokens are used to deliver notifications.</p>
+            </article>
+            <article class="card">
+              <h3>In-app data</h3>
+              <p>Settings, templates, history, reflection notes, and usage counts are handled to provide the app experience.</p>
+            </article>
+            <article class="card">
+              <h3>Cloud storage</h3>
+              <p>Data is stored in Firestore only when the user signs in. Guest use does not store data in the cloud.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>1. 我们处理的数据</h2>
+          <p class="sub">Didiforget 会根据用户使用的功能和权限设置，处理以下数据。</p>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>账号信息</h3>
+              <p>当用户通过 Google 或 Apple 登录时，应用可能处理 uid、显示名称，以及在必要时处理电子邮箱地址。</p>
+            </article>
+            <article class="card">
+              <h3>照片与相机</h3>
+              <p>拍摄或选择的图片会用于物品检查和 AI 建议。应用不会自动将照片保存到设备相册。</p>
+            </article>
+            <article class="card">
+              <h3>位置信息</h3>
+              <p>位置信息用于显示当地天气，并用于外出提醒通知。</p>
+            </article>
+            <article class="card">
+              <h3>通知相关数据</h3>
+              <p>通知权限状态以及 FCM 或 APNs token 会用于发送通知。</p>
+            </article>
+            <article class="card">
+              <h3>应用内数据</h3>
+              <p>设置、模板、历史记录、回顾笔记和使用次数等数据会用于提供应用功能。</p>
+            </article>
+            <article class="card">
+              <h3>云端存储</h3>
+              <p>只有在用户登录时，数据才会存储到 Firestore。访客模式不会将数据保存在云端。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>2. 利用目的</h2>
+          <div class="card">
+            <ul>
+              <li>忘れ物チェックの提供</li>
+              <li>AI による持ち物候補判定</li>
+              <li>天気に応じた提案の表示</li>
+              <li>外出時通知の配信</li>
+              <li>端末間同期</li>
+              <li>利用状況の管理および不正利用防止</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>2. Why We Use Data</h2>
+          <div class="card">
+            <ul>
+              <li>Provide item checks</li>
+              <li>Generate AI-based item suggestions</li>
+              <li>Show weather-aware suggestions</li>
+              <li>Send outing reminder notifications</li>
+              <li>Sync data across devices</li>
+              <li>Manage usage and help prevent misuse</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>2. 数据用途</h2>
+          <div class="card">
+            <ul>
+              <li>提供物品检查功能</li>
+              <li>生成基于 AI 的物品候选建议</li>
+              <li>显示与天气相关的建议</li>
+              <li>发送外出提醒通知</li>
+              <li>在设备间同步数据</li>
+              <li>管理使用情况并帮助防止滥用</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>3. 保存先と第三者サービス</h2>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>利用する基盤</h3>
+              <ul>
+                <li>Firebase Authentication</li>
+                <li>Cloud Firestore</li>
+                <li>Firebase Cloud Messaging</li>
+                <li>Firebase AI / Gemini 系の画像・テキスト処理</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>第三者提供</h3>
+              <p>法令対応または委託先サービスの利用を除き、ユーザーデータを第三者へ提供しません。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>3. Storage and Service Providers</h2>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>Platforms used</h3>
+              <ul>
+                <li>Firebase Authentication</li>
+                <li>Cloud Firestore</li>
+                <li>Firebase Cloud Messaging</li>
+                <li>Firebase AI / Gemini image and text processing</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Third-party disclosure</h3>
+              <p>User data is not provided to third parties except as required by law or as needed to use contracted service providers.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>3. 存储位置与服务提供方</h2>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>使用的平台</h3>
+              <ul>
+                <li>Firebase Authentication</li>
+                <li>Cloud Firestore</li>
+                <li>Firebase Cloud Messaging</li>
+                <li>Firebase AI / Gemini 图像与文本处理</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>向第三方提供</h3>
+              <p>除法律要求或使用受托服务提供方所必需的情况外，用户数据不会提供给第三方。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>4. 保存期間</h2>
+          <div class="card">
+            <ul>
+              <li>アカウント利用中は必要な範囲でデータを保持します。</li>
+              <li>履歴や設定はユーザー操作で削除できます。</li>
+              <li>アカウント完全削除時は、クラウド保存データと認証アカウントを削除します。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>4. Retention</h2>
+          <div class="card">
+            <ul>
+              <li>Data is retained as needed while the account remains in use.</li>
+              <li>History and settings can be removed by the user.</li>
+              <li>When the account is fully deleted, cloud-stored data and the authentication account are deleted.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>4. 保存期限</h2>
+          <div class="card">
+            <ul>
+              <li>在账号持续使用期间，数据会在必要范围内保存。</li>
+              <li>历史记录和设置可由用户自行删除。</li>
+              <li>当账号被彻底删除时，云端保存的数据和认证账号也会被删除。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>5. ユーザーの権利</h2>
+          <div class="card">
+            <ul>
+              <li>通知をオフにする</li>
+              <li>位置情報をオフにする</li>
+              <li>写真保存をオフにする</li>
+              <li>履歴を削除する</li>
+              <li>データをエクスポートする</li>
+              <li>アカウントを完全削除する</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>5. User Controls</h2>
+          <div class="card">
+            <ul>
+              <li>Turn notifications off</li>
+              <li>Turn location access off</li>
+              <li>Turn photo saving off</li>
+              <li>Delete history</li>
+              <li>Export data</li>
+              <li>Fully delete the account</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>5. 用户可进行的控制</h2>
+          <div class="card">
+            <ul>
+              <li>关闭通知</li>
+              <li>关闭位置权限</li>
+              <li>关闭照片保存</li>
+              <li>删除历史记录</li>
+              <li>导出数据</li>
+              <li>彻底删除账号</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>6. 権限の説明</h2>
+          <div class="card">
+            <dl>
+              <dt>カメラ</dt>
+              <dd>持ち物チェックのために使います。</dd>
+              <dt>写真</dt>
+              <dd>選択画像で持ち物をチェックするために使います。</dd>
+              <dt>位置情報</dt>
+              <dd>現在地の天気表示と外出通知のために使います。</dd>
+              <dt>通知</dt>
+              <dd>リマインダー配信のために使います。</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>6. Permission Explanations</h2>
+          <div class="card">
+            <dl>
+              <dt>Camera</dt>
+              <dd>Used for item checks.</dd>
+              <dt>Photos</dt>
+              <dd>Used to run checks on selected images.</dd>
+              <dt>Location</dt>
+              <dd>Used for local weather and outing reminders.</dd>
+              <dt>Notifications</dt>
+              <dd>Used to deliver reminder notifications.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>6. 权限说明</h2>
+          <div class="card">
+            <dl>
+              <dt>相机</dt>
+              <dd>用于物品检查。</dd>
+              <dt>照片</dt>
+              <dd>用于检查用户选择的图片。</dd>
+              <dt>位置</dt>
+              <dd>用于当地天气显示和外出提醒。</dd>
+              <dt>通知</dt>
+              <dd>用于发送提醒通知。</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>7. 子ども向けについて</h2>
+          <div class="card">
+            <p>Didiforget は子ども向け専用アプリではありません。13歳未満の利用を主な対象として想定していません。</p>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>7. Children</h2>
+          <div class="card">
+            <p>Didiforget is not a children-only app and is not primarily intended for children under 13.</p>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>7. 儿童相关说明</h2>
+          <div class="card">
+            <p>Didiforget 不是面向儿童的专用应用，也并非主要面向 13 岁以下儿童。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>8. セキュリティ</h2>
+          <div class="card">
+            <ul>
+              <li>通信には Firebase などの提供基盤を利用します。</li>
+              <li>必要最小限のデータのみを保存します。</li>
+              <li>通知トークンは画面表示時にマスクして扱うことがあります。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>8. Security</h2>
+          <div class="card">
+            <ul>
+              <li>Network communication uses platforms such as Firebase.</li>
+              <li>Only the minimum data needed for the feature set is stored.</li>
+              <li>Notification tokens may be masked when shown on-screen.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>8. 安全性</h2>
+          <div class="card">
+            <ul>
+              <li>网络通信使用 Firebase 等提供的平台。</li>
+              <li>只保存实现功能所需的最少数据。</li>
+              <li>通知 token 在界面显示时可能会进行遮罩处理。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="lang-panel active" data-lang-panel="ja">
+          <h2>9. 改定</h2>
+          <div class="card">
+            <p>本ポリシーを変更する場合、アプリ内表示、設定画面、または公開ページ上で告知します。最新の内容はこのページに掲載します。</p>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="en">
+          <h2>9. Changes to This Policy</h2>
+          <div class="card">
+            <p>If this policy changes, notice may be provided in the app, in settings, or on the public policy page. The latest version is always published here.</p>
+          </div>
+        </div>
+
+        <div class="lang-panel" data-lang-panel="zh">
+          <h2>9. 政策变更</h2>
+          <div class="card">
+            <p>如果本政策发生变更，应用可能会在应用内、设置页面或公开政策页面进行通知。最新版本始终发布在本页面。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <p class="footer">Contact: taito.harada@gmail.com</p>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-lang]");
+    const panels = document.querySelectorAll("[data-lang-panel]");
+
+    function setLanguage(lang) {
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.langPanel === lang);
+      });
+
+      document.documentElement.lang = lang === "ja" ? "ja" : lang === "zh" ? "zh-CN" : "en";
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+  </script>
+</body>
+</html>
